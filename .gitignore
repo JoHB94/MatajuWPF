@@ -1,0 +1,8 @@
+# Visual Studio 관련 파일
+.vs/
+*.suo
+*.user
+
+# 빌드 디렉토리
+bin/
+obj/
