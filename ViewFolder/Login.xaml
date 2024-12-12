@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mataju.ViewFolder"
+        xmlns:vm="clr-namespace:Mataju.VMFolder"
         mc:Ignorable="d"
         Title="Login" Height="750" Width="1350">
+    <!--뷰모델 데이터 콘텍스트 등록-->
+    <Page.DataContext>
+        <vm:LoginViewModel/>
+    </Page.DataContext>
     <Grid  Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500"/>
@@ -22,11 +27,12 @@
                 <Frame x:Name="JoinFrame" Visibility="Collapsed"/>
             </Grid>
             <Grid x:Name="LoginGrid" Grid.Row="1">
-                <TextBox HorizontalAlignment="Left" Margin="40,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="53"/>
-                <PasswordBox HorizontalAlignment="Left" Margin="40,137,0,0" VerticalAlignment="Top" Width="276" Height="53"/>
+                <TextBox Text="{Binding LoginModel.Name}" HorizontalAlignment="Left" Margin="40,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="53"/>
+                <PasswordBox PasswordChar="{Binding LoginModel.Password}" HorizontalAlignment="Left" Margin="40,137,0,0" VerticalAlignment="Top" Width="276" Height="53"/>
                 <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="34"
                    FontSize="25" TextAlignment="Center" FontWeight="Bold"><Run Language="ko-kr" Text="LOGIN"/></TextBlock>
-                <Button x:Name="LoginBtn" Width="120" Content="LOGIN" Margin="326,66,54,52"/>
+                <Button x:Name="LoginBtn" Command="{Binding LoginCommand}" 
+                        Width="120" Content="LOGIN" Margin="326,66,54,52"/>
                 <Button x:Name="JoinBtn" Width="120" Height="20" Content="회원가입" Margin="326,208,54,17" Click="JoinBtn_Click"/>
                 
                 

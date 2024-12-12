@@ -37,7 +37,7 @@ namespace Mataju.VMFolder
 
         public LoginViewModel()
         {
-            //LoginCommand = new RelayCommand(async() => await )
+            LoginCommand = new RelayCommand(async () => await LoginAsync());
         }
 
         public async Task LoginAsync()
