@@ -107,6 +107,7 @@
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelFolder\HttpManager.cs" />
+    <Compile Include="ModelFolder\LoginModel.cs" />
     <Compile Include="ModelFolder\User.cs" />
     <Compile Include="ViewFolder\Join.xaml.cs">
       <DependentUpon>Join.xaml</DependentUpon>

@@ -7,11 +7,17 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Windows;
+using System.Security.RightsManagement;
+using Newtonsoft.Json.Linq;
 
 namespace Mataju.VMFolder
 {
     internal class LoginViewModel : ViewModelBase
     {
+        public static string token = null;
+        public static string nickname = null;
+
         private LoginModel _loginModel = new LoginModel();
 
         public LoginModel LoginModel 
@@ -38,7 +44,40 @@ namespace Mataju.VMFolder
         {
 
             //API 엔드포인트
-            string apiUrl = "";
+            string apiUrl = "http://localhost:5236/api/User/login";
+
+            try
+            {
+                HttpResponseMessage responseMessage = await HttpManager.PostAsync(apiUrl, LoginModel);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string responseContent = await responseMessage.Content.ReadAsStringAsync();
+                    JObject json = JObject.Parse(responseContent);
+                    token = json["data"]?["token"]?.ToString();
+                    nickname = json["data"]?["nickname"]?.ToString();
+
+                    Console.WriteLine($"응답: {responseContent}");
+                    MessageBox.Show("로그인 성공 " + nickname + "님");
+                }
+                else
+                {
+                    string errorContent = await responseMessage.Content.ReadAsStringAsync();
+                    Console.WriteLine($"오류 상태: {responseMessage.StatusCode}, 내용: {errorContent}");
+                    MessageBox.Show("로그인 실패");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                //네트워크 오류
+                Console.WriteLine($"네트워크 오류: {ex.Message}");
+                MessageBox.Show("서버에 연결할 수 없습니다. 나중에 다시 시도하세요.");
+            }
+            catch (Exception ex)
+            {
+                //알수 없는 오류
+                Console.WriteLine($"예외 발생: {ex.Message}");
+                MessageBox.Show("알 수 없는 오류가 발생했습니다.");
+            }
         }
     }
 }
