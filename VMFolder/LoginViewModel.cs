@@ -53,11 +53,13 @@ namespace Mataju.VMFolder
                 {
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
                     JObject json = JObject.Parse(responseContent);
-                    token = json["data"]?["token"]?.ToString();
-                    nickname = json["data"]?["nickname"]?.ToString();
+                    token = json["token"]?.ToString();
+                    nickname = json["nickname"]?.ToString();
+                    Console.WriteLine($"token: {token}");
+                    Console.WriteLine($"nickname: {nickname}");
 
                     Console.WriteLine($"응답: {responseContent}");
-                    MessageBox.Show("로그인 성공 " + nickname + "님");
+                    MessageBox.Show($"안녕하세요, {nickname}님! 로그인에 성공하셨습니다.");
                 }
                 else
                 {
