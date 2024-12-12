@@ -107,6 +107,7 @@
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelFolder\HttpManager.cs" />
+    <Compile Include="ModelFolder\LoginModel.cs" />
     <Compile Include="ModelFolder\User.cs" />
     <Compile Include="ViewFolder\Join.xaml.cs">
       <DependentUpon>Join.xaml</DependentUpon>
@@ -118,6 +119,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMFolder\LoginViewModel.cs" />
+    <Compile Include="VMFolder\PasswordExtends.cs" />
     <Compile Include="VMFolder\RelayCommand.cs" />
     <Compile Include="VMFolder\UserViewModel.cs" />
     <Compile Include="VMFolder\ViewModelBase.cs" />

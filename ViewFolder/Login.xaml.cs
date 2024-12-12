@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mataju.VMFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,14 @@ namespace Mataju.ViewFolder
             Join join = new Join();
             join.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             join.ShowDialog();
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is LoginViewModel viewModel)
+            {
+                viewModel.LoginModel.Password = (sender as PasswordBox)?.Password;
+            }
         }
     }
 }
