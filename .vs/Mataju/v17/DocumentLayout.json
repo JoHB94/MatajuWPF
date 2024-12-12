@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Mataju\\Mataju\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|c:\\users\\user\\mataju\\mataju\\vmfolder\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:vmfolder\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|c:\\users\\user\\mataju\\mataju\\vmfolder\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:vmfolder\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|C:\\Users\\User\\Mataju\\Mataju\\vmfolder\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:vmfolder\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|C:\\Users\\User\\Mataju\\Mataju\\vmfolder\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:vmfolder\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|C:\\Users\\User\\Mataju\\Mataju\\viewfolder\\join.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:viewfolder\\join.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|C:\\Users\\User\\Mataju\\Mataju\\modelfolder\\httpmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:modelfolder\\httpmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|c:\\users\\user\\mataju\\mataju\\viewfolder\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:viewfolder\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|C:\\Users\\User\\Mataju\\Mataju\\viewfolder\\join.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{703479CD-117D-47C2-BBE8-B216EDD71EC0}|Mataju.csproj|solutionrelative:viewfolder\\join.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 166,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "VMFolder\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\LoginViewModel.cs",
+              "RelativeToolTip": "VMFolder\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T00:13:03.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\ViewFolder\\Login.xaml",
+              "RelativeDocumentMoniker": "ViewFolder\\Login.xaml",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\ViewFolder\\Login.xaml",
+              "RelativeToolTip": "ViewFolder\\Login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-12T00:06:53.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Join.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\ViewFolder\\Join.xaml.cs",
+              "RelativeDocumentMoniker": "ViewFolder\\Join.xaml.cs",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\ViewFolder\\Join.xaml.cs",
+              "RelativeToolTip": "ViewFolder\\Join.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvx8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T17:05:33.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Join.xaml",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\ViewFolder\\Join.xaml",
+              "RelativeDocumentMoniker": "ViewFolder\\Join.xaml",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\ViewFolder\\Join.xaml",
+              "RelativeToolTip": "ViewFolder\\Join.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-11T17:04:58.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "VMFolder\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\RelayCommand.cs",
+              "RelativeToolTip": "VMFolder\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxoAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T16:55:49.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ViewModelBase.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\ViewModelBase.cs",
+              "RelativeDocumentMoniker": "VMFolder\\ViewModelBase.cs",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\ViewModelBase.cs",
+              "RelativeToolTip": "VMFolder\\ViewModelBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvw4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T16:51:04.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HttpManager.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\ModelFolder\\HttpManager.cs",
+              "RelativeDocumentMoniker": "ModelFolder\\HttpManager.cs",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\ModelFolder\\HttpManager.cs",
+              "RelativeToolTip": "ModelFolder\\HttpManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T16:49:33.992Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 166,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "VMFolder\\UserViewModel.cs",
+              "ToolTip": "C:\\Users\\User\\Mataju\\Mataju\\VMFolder\\UserViewModel.cs",
+              "RelativeToolTip": "VMFolder\\UserViewModel.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-11T16:48:45.919Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
