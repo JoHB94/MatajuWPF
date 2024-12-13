@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Windows;
 using System.Security.RightsManagement;
 using Newtonsoft.Json.Linq;
+using Mataju.ViewFolder;
 
 namespace Mataju.VMFolder
 {
@@ -60,6 +61,12 @@ namespace Mataju.VMFolder
 
                     Console.WriteLine($"응답: {responseContent}");
                     MessageBox.Show($"안녕하세요, {nickname}님! 로그인에 성공하셨습니다.");
+                    
+                    List list = new List();
+                    list.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                    list.Show();
+                    Application.Current.Windows[0]?.Close();
+
                 }
                 else
                 {
