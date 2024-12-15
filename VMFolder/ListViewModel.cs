@@ -45,7 +45,7 @@ namespace Mataju.VMFolder
                     List<HouseModel> housesList = JsonConvert.DeserializeObject<List<HouseModel>>(responseContent);
                     Console.WriteLine(housesList.Count);
 
-                    _houses = new ObservableCollection<HouseModel>(housesList);
+                    Houses = new ObservableCollection<HouseModel>(housesList);
                     foreach (var house in Houses)
                     {
                         Console.WriteLine(house);

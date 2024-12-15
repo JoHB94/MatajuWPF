@@ -16,7 +16,24 @@ namespace Mataju.ModelFolder
         {
             return $"Id: {HouseId}, 주소: {HouseAdd}, province: {Province}"; // 출력하고 싶은 속성들을 추가하세요.
         }
+        [JsonProperty("id")]
+        public int HouseId { get; set; }
 
+        [JsonProperty("add")]
+        public string HouseAdd { get; set; }
+
+        [JsonProperty("province")]
+        public string Province { get; set; }
+
+        [JsonProperty("priceS")]
+        public int PriceS { get; set; }
+        [JsonProperty("priceM")]
+        public int PriceM { get; set; }
+        [JsonProperty("priceL")]
+        public int PriceL { get; set; }
+
+
+        /*
         [JsonProperty("id")]
         private int _houseId;
         public int HouseId { get => _houseId;
@@ -105,6 +122,9 @@ namespace Mataju.ModelFolder
                     OnPropertyChanged(nameof(PriceL));
                 }
             }
-        }
-    }
+        } */
+
+
+    } 
+       
 }

@@ -14,7 +14,7 @@
         <vm:ListViewModel/>
     </Window.DataContext>
     <Grid>
-        <!--
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="70" />
@@ -25,21 +25,22 @@
         <comp:Header Grid.Row="0" />
     
         <ComboBox Grid.Row="1" Height="40" Margin="15,0" Width="180" HorizontalAlignment="Left" />
-        -->
-        <ItemsControl Grid.Row="2" ItemsSource="{Binding Houses}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding HouseAdd}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-<!--
-        <ItemsControl Grid.Row="2" ItemsSource="{Binding Houses}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <comp:Card />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>-->
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Houses}">
+                <ItemsControl.ItemsPanel>
+                    <!-- UniformGrid로 동적 레이아웃 설정 -->
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="6" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <!-- 카드(UserControl) 템플릿 -->
+                    <DataTemplate>
+                        <comp:Card />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>

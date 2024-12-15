@@ -24,7 +24,7 @@ namespace Mataju.CompFolder
         {
             InitializeComponent();
         }
-        /*
+       
         //의존성 프로퍼티 추가 : name, add, img
 
         // Name 속성
@@ -55,6 +55,6 @@ namespace Mataju.CompFolder
         {
             get => (ImageSource)GetValue(ImgProperty);
             set => SetValue(ImgProperty, value);
-        }*/
+        }
     }
 }
