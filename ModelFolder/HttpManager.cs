@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Mataju.VMFolder;
 
 namespace Mataju.ModelFolder
 {
@@ -30,6 +31,10 @@ namespace Mataju.ModelFolder
         // GET 요청 메서드
         public static async Task<HttpResponseMessage> GetAsync(string url)
         {
+            //Request 헤더에 토큰 추가
+            _httpClient.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LoginViewModel.token);
+
             try
             {
                 return await _httpClient.GetAsync(url);

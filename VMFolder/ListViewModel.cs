@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Windows;
+using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 
 namespace Mataju.VMFolder
 {
     internal class ListViewModel : ViewModelBase
     {
-        private List<HouseModel> _houses = new List<HouseModel>();
+        private ObservableCollection<HouseModel> _houses = new ObservableCollection<HouseModel>();
 
-        public List<HouseModel> Houses { 
+        public ObservableCollection<HouseModel> Houses { 
             get => _houses; 
             set
             {
@@ -29,8 +31,9 @@ namespace Mataju.VMFolder
 
         public async Task GetHouses()
         {
+            Console.WriteLine("GetHouses 호출!");
             //API 엔드 포인트
-            string apiUri = "http://localhost:5236/api/Admin/seed-houses";
+            string apiUri = "http://3.38.45.83/api/House/all";
 
             try
             {
@@ -38,9 +41,16 @@ namespace Mataju.VMFolder
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
-                    JObject json = JObject.Parse(responseContent);
+                    //JArray json = JArray.Parse(responseContent);
+                    List<HouseModel> housesList = JsonConvert.DeserializeObject<List<HouseModel>>(responseContent);
+                    Console.WriteLine(housesList.Count);
 
-                    _houses = json["houses"]?.ToObject<List<HouseModel>>();
+                    _houses = new ObservableCollection<HouseModel>(housesList);
+                    foreach (var house in Houses)
+                    {
+                        Console.WriteLine(house);
+                    }
+
                 }
                 else
                 {

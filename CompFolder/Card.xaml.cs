@@ -23,29 +23,28 @@ namespace Mataju.CompFolder
         public Card()
         {
             InitializeComponent();
-            this.DataContext = this; // UserControl 자체를 DataContext로 설정
         }
-
+        /*
         //의존성 프로퍼티 추가 : name, add, img
 
         // Name 속성
-        public static readonly DependencyProperty HouseNameProperty =
-            DependencyProperty.Register(nameof(HouseName), typeof(string), typeof(Card), new PropertyMetadata("Default Name"));
+        public static readonly DependencyProperty HouseIdProperty =
+            DependencyProperty.Register(nameof(HouseId), typeof(string), typeof(Card), new PropertyMetadata("Default Name"));
 
-        public string HouseName
+        public string HouseId
         {
-            get => (string)GetValue(HouseNameProperty);
-            set => SetValue(HouseNameProperty, value);
+            get => (string)GetValue(HouseIdProperty);
+            set => SetValue(HouseIdProperty, value);
         }
 
         // Add 속성
-        public static readonly DependencyProperty AddProperty =
-            DependencyProperty.Register(nameof(Add), typeof(string), typeof(Card), new PropertyMetadata("Default Address"));
+        public static readonly DependencyProperty HouseAddProperty =
+            DependencyProperty.Register(nameof(HouseAdd), typeof(string), typeof(Card), new PropertyMetadata("Default Address"));
 
-        public string Add
+        public string HouseAdd
         {
-            get => (string)GetValue(AddProperty);
-            set => SetValue(AddProperty, value);
+            get => (string)GetValue(HouseAddProperty);
+            set => SetValue(HouseAddProperty, value);
         }
 
         // Img 속성
@@ -56,6 +55,6 @@ namespace Mataju.CompFolder
         {
             get => (ImageSource)GetValue(ImgProperty);
             set => SetValue(ImgProperty, value);
-        }
+        }*/
     }
 }

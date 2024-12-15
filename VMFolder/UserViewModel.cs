@@ -44,7 +44,7 @@ namespace Mataju.VMFolder
         {
      
             //API 엔드포인트
-            string apiUrl = "http://localhost:5236/api/User/register";
+            string apiUrl = "http://3.38.45.83/api/User/register";
             try
             {
                  //POST 요청 보내고 응답 받기

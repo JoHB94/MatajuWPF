@@ -45,7 +45,7 @@ namespace Mataju.VMFolder
         {
 
             //API 엔드포인트
-            string apiUrl = "http://localhost:5236/api/User/login";
+            string apiUrl = "http://3.38.45.83/api/User/login";
 
             try
             {
