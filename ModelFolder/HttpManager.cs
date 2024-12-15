@@ -12,6 +12,7 @@ namespace Mataju.ModelFolder
     {
         private static readonly HttpClient _httpClient = new HttpClient();
 
+        //POST 요청 메소드
         public static async Task<HttpResponseMessage> PostAsync(string url, object data)
         {
             try
@@ -25,5 +26,19 @@ namespace Mataju.ModelFolder
                 throw new HttpRequestException($"POST 요청 중 오류 발생: {ex.Message}", ex);
             }
         }
+
+        // GET 요청 메서드
+        public static async Task<HttpResponseMessage> GetAsync(string url)
+        {
+            try
+            {
+                return await _httpClient.GetAsync(url);
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException($"GET 요청 중 오류 발생: {ex.Message}", ex);
+            }
+        }
     }
+
 }

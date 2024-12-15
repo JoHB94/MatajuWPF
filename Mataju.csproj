@@ -106,6 +106,7 @@
     <Compile Include="CompFolder\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModelFolder\HouseModel.cs" />
     <Compile Include="ModelFolder\HttpManager.cs" />
     <Compile Include="ModelFolder\LoginModel.cs" />
     <Compile Include="ModelFolder\User.cs" />
