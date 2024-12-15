@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Mataju.ViewFolder;
+using Mataju.VMFolder;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Mataju.CompFolder
 {
     /// <summary>
@@ -23,6 +28,15 @@ namespace Mataju.CompFolder
         public Header()
         {
             InitializeComponent();
+        }
+
+        private void logoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // 애플리케이션 재시작
+            Process.Start(Application.ResourceAssembly.Location);
+
+            // 현재 애플리케이션 종료
+            Application.Current.Shutdown();
         }
     }
 }
