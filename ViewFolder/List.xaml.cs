@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mataju.VMFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Mataju.ViewFolder
         public List()
         {
             InitializeComponent();
+            DataContext = new ListViewModel();
         }
     }
 }

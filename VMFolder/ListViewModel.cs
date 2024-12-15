@@ -16,7 +16,8 @@ namespace Mataju.VMFolder
         private List<HouseModel> _houses = new List<HouseModel>();
 
         public List<HouseModel> Houses { 
-            get => _houses; set
+            get => _houses; 
+            set
             {
                 if (_houses != value)
                 {
