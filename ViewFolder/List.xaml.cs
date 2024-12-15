@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mataju.VMFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace Mataju.ViewFolder
     /// </summary>
     public partial class List : Window
     {
+        private ListViewModel _viewModel = new ListViewModel();
         public List()
         {
             InitializeComponent();
+            this.DataContext = _viewModel;
+
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // GetHouses 메서드 호출
+            await _viewModel.GetHouses();
         }
     }
 }
