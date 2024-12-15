@@ -13,9 +13,18 @@ namespace Mataju.VMFolder
 {
     internal class ListViewModel : ViewModelBase
     {
-        private List<HouseModel> houses = new List<HouseModel>();
+        private List<HouseModel> _houses = new List<HouseModel>();
 
-        public List<HouseModel> Houses { get => houses; }
+        public List<HouseModel> Houses { 
+            get => _houses; set
+            {
+                if (_houses != value)
+                {
+                    _houses = value;
+                    OnPropertyChanged(nameof(Houses));
+                }
+            }
+        }
 
         public async Task GetHouses()
         {
@@ -30,7 +39,7 @@ namespace Mataju.VMFolder
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
                     JObject json = JObject.Parse(responseContent);
 
-                    houses = json["houses"]?.ToObject<List<HouseModel>>();
+                    _houses = json["houses"]?.ToObject<List<HouseModel>>();
                 }
                 else
                 {
