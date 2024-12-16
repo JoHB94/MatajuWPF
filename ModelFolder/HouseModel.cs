@@ -14,7 +14,7 @@ namespace Mataju.ModelFolder
     {
         public override string ToString()
         {
-            return $"Id: {HouseId}, 주소: {HouseAdd}, province: {Province}"; // 출력하고 싶은 속성들을 추가하세요.
+            return $"Id: {HouseId}, add: {HouseAdd}, province: {Province}, priceS:{PriceS}, priceM:{PriceM}, priceL:{PriceL},"; // 출력하고 싶은 속성들을 추가하세요.
         }
         [JsonProperty("id")]
         public int HouseId { get; set; }
