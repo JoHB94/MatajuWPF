@@ -106,6 +106,7 @@
     <Compile Include="CompFolder\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModelFolder\CardModel.cs" />
     <Compile Include="ModelFolder\HouseModel.cs" />
     <Compile Include="ModelFolder\HttpManager.cs" />
     <Compile Include="ModelFolder\LoginModel.cs" />
@@ -192,7 +193,53 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\01-1.jpeg" />
+    <Resource Include="Resources\01-2.jpeg" />
+    <Resource Include="Resources\01-3.jpeg" />
+    <Resource Include="Resources\02-1.jpeg" />
+    <Resource Include="Resources\02-2.jpeg" />
+    <Resource Include="Resources\02-3.jpeg" />
+    <Resource Include="Resources\03-1.jpeg" />
+    <Resource Include="Resources\03-2.jpeg" />
+    <Resource Include="Resources\03-3.jpeg" />
+    <Resource Include="Resources\04-1.png" />
+    <Resource Include="Resources\04-2.jpeg" />
+    <Resource Include="Resources\04-3.jpeg" />
+    <Resource Include="Resources\05-1.jpeg" />
+    <Resource Include="Resources\05-2.jpeg" />
+    <Resource Include="Resources\05-3.jpeg" />
+    <Resource Include="Resources\06-1.jpeg" />
+    <Resource Include="Resources\06-2.jpeg" />
+    <Resource Include="Resources\06-3.jpeg" />
+    <Resource Include="Resources\07-1.jpeg" />
+    <Resource Include="Resources\07-2.jpeg" />
+    <Resource Include="Resources\07-3.jpeg" />
+    <Resource Include="Resources\08-1.jpeg" />
+    <Resource Include="Resources\08-2.jpeg" />
+    <Resource Include="Resources\08-3.png" />
+    <Resource Include="Resources\09-1.jpeg" />
+    <Resource Include="Resources\09-2.jpeg" />
+    <Resource Include="Resources\09-3.jpeg" />
+    <Resource Include="Resources\10-1.jpeg" />
+    <Resource Include="Resources\10-2.jpeg" />
+    <Resource Include="Resources\10-3.jpeg" />
+    <Resource Include="Resources\11-1.jpeg" />
+    <Resource Include="Resources\11-2.jpeg" />
+    <Resource Include="Resources\11-3.jpeg" />
+    <Resource Include="Resources\12-1.jpeg" />
+    <Resource Include="Resources\12-2.jpeg" />
+    <Resource Include="Resources\12-3.jpeg" />
+    <Resource Include="Resources\13-1.jpeg" />
+    <Resource Include="Resources\13-2.jpeg" />
+    <Resource Include="Resources\13-3.png" />
+    <Resource Include="Resources\14-1.jpeg" />
+    <Resource Include="Resources\14-2.jpeg" />
+    <Resource Include="Resources\14-3.png" />
+    <Resource Include="Resources\15-1.jpeg" />
+    <Resource Include="Resources\15-2.jpeg" />
+    <Resource Include="Resources\15-3.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
