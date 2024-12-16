@@ -16,7 +16,7 @@ namespace Mataju.VMFolder
 {
     internal class ListViewModel : ViewModelBase
     {
-
+        //Card Observable
         private ObservableCollection<CardModel> _cards = new ObservableCollection<CardModel>();
         public ObservableCollection<CardModel> Cards
         {
@@ -27,9 +27,65 @@ namespace Mataju.VMFolder
                 {
                     _cards = value;
                     OnPropertyChanged(nameof(Cards));
+                    // Cards 변경 시 FilteredCards 갱신
+                    OnPropertyChanged(nameof(FilteredCards));
+                    OnPropertyChanged(nameof(Provinces));
                 }
             }
         }
+
+        //ComboBox Observable
+        private string _selectedProvince ="전체";
+        public string SelectedProvince
+        {
+            get => _selectedProvince;
+            set
+            {
+                if (_selectedProvince != value)
+                {
+                    _selectedProvince = value;
+                    OnPropertyChanged(nameof(SelectedProvince));
+                    // SelectedProvince 변경 시 FilteredCards 갱신
+                    OnPropertyChanged(nameof(FilteredCards));
+                }
+            }
+        }
+
+        // ComboBox에 바인딩할 Province 리스트
+        public ObservableCollection<string> Provinces
+        {
+            get
+            {
+                // "전체" 항목 추가 및 기존 Province 리스트와 병합
+                var provincesWithAll = new ObservableCollection<string> { "전체" };
+                foreach (var province in Cards.Select(card => card.Province).Distinct().OrderBy(p => p))
+                {
+                    provincesWithAll.Add(province);
+                }
+                return provincesWithAll;
+            }
+        }
+
+        // SelectedProvince에 따라 필터링된 Cards 반환
+        public ObservableCollection<CardModel> FilteredCards
+        {
+            get
+            {
+                if (SelectedProvince == "전체")
+                {
+                    // 전체 Province 반환
+                    return Cards;
+                }
+                else
+                {
+                    // 선택된 Province에 해당하는 Cards만 반환
+                    return new ObservableCollection<CardModel>(
+                        Cards.Where(card => card.Province == SelectedProvince)
+                    );
+                }
+            }
+        }
+
 
 
         public async Task GetHouses()
@@ -58,7 +114,7 @@ namespace Mataju.VMFolder
                                                                   file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
                                                                   file.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase))
                                                    .ToArray();
-                    // HouseModel -> CardModel변경
+                    // HouseModel -> CardModel변경 
                     List<CardModel> cardList = new List<CardModel>();
                     for (int i = 0; i < housesList.Count; i++)
                     {
