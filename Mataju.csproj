@@ -110,6 +110,7 @@
     <Compile Include="ModelFolder\HouseModel.cs" />
     <Compile Include="ModelFolder\HttpManager.cs" />
     <Compile Include="ModelFolder\LoginModel.cs" />
+    <Compile Include="ModelFolder\ProvinceModel.cs" />
     <Compile Include="ModelFolder\User.cs" />
     <Compile Include="ViewFolder\Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>

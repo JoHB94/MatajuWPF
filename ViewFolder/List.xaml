@@ -24,10 +24,12 @@
 
         <comp:Header Grid.Row="0" />
     
-        <ComboBox Grid.Row="1" Height="40" Margin="15,0" Width="180" HorizontalAlignment="Left" />
+        <ComboBox  ItemsSource="{Binding Provinces}"
+                   SelectedItem="{Binding SelectedProvince, Mode=TwoWay}"
+            Grid.Row="1" Height="40" Margin="15,0" Width="180" HorizontalAlignment="Left" />
 
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding Cards}">
+            <ItemsControl ItemsSource="{Binding FilteredCards}">
                 <ItemsControl.ItemsPanel>
                     <!-- UniformGrid로 동적 레이아웃 설정 -->
                     <ItemsPanelTemplate>
