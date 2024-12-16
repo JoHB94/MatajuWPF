@@ -120,11 +120,8 @@ namespace Mataju.VMFolder
                     HouseModel houseModel = JsonConvert.DeserializeObject<HouseModel>(responseContent);
                     SelectedHouse = houseModel;
                     Console.WriteLine(SelectedHouse);
-                    Detail detail = new Detail
-                    {
-                        
-                        DataContext = SelectedHouse // DataContext로 SelectedHouse 전달
-                    };
+                    Detail detail = new Detail(SelectedHouse);
+                    
                     detail.ShowDialog();
 
                 }

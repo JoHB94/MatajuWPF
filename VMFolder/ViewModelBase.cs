@@ -12,7 +12,7 @@ namespace Mataju.VMFolder
     /*
         property가 변경된것을 View가 알게해주는 기능
      */
-    internal class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

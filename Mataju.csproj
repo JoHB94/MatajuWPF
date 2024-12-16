@@ -124,6 +124,7 @@
     <Compile Include="ViewFolder\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VMFolder\DetailViewModel.cs" />
     <Compile Include="VMFolder\ListViewModel.cs" />
     <Compile Include="VMFolder\LoginViewModel.cs" />
     <Compile Include="VMFolder\PasswordExtends.cs" />

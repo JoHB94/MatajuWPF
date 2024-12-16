@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Mataju.ModelFolder
 {
-    internal class HouseModel : ViewModelBase
+    public class HouseModel : ViewModelBase
     {
         public override string ToString()
         {
