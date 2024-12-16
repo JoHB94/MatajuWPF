@@ -10,7 +10,7 @@
              d:DesignHeight="273"
              d:DesignWidth="210">
 
-    <Grid Height="260" Width="200" Margin="0,0,0,10">
+    <Grid Height="240" Width="200" >
         <Grid.RowDefinitions>
             <RowDefinition Height="140" />
             <RowDefinition Height="*" />

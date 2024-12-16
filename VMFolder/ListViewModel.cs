@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.IO;
 using Mataju.Properties;
+using System.Windows.Input;
 
 namespace Mataju.VMFolder
 {
@@ -34,7 +35,7 @@ namespace Mataju.VMFolder
             }
         }
 
-        //ComboBox Observable
+        //ComboBox 읽기 전용
         private string _selectedProvince ="전체";
         public string SelectedProvince
         {
@@ -86,6 +87,63 @@ namespace Mataju.VMFolder
             }
         }
 
+        //HouseModel 변경감지
+        private HouseModel _selectedHouse;
+        public HouseModel SelectedHouse
+        {
+            get => _selectedHouse;
+            set
+            {
+                if (_selectedHouse != value)
+                {
+                    _selectedHouse = value;
+                    OnPropertyChanged(nameof(SelectedHouse)); // 변경 통지
+                }
+            }
+        }
+
+
+        public async Task GetHousebyId(object parameter)
+        {
+            Console.WriteLine("GetHousebyId 호출!");
+
+            //API 엔드 포인트
+            string apiUri = string.Format("http://3.38.45.83/api/House/{0}", parameter);
+
+            try
+            {
+                HttpResponseMessage responseMessage = await HttpManager.GetAsync(apiUri);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string responseContent = await responseMessage.Content.ReadAsStringAsync();
+                    HouseModel houseModel = JsonConvert.DeserializeObject<HouseModel>(responseContent);
+                    SelectedHouse = houseModel;
+
+                }
+                else
+                {
+                    string errorContent = await responseMessage.Content.ReadAsStringAsync();
+                    Console.WriteLine($"오류 상태: {responseMessage.StatusCode}, 내용: {errorContent}");
+                    MessageBox.Show("house 정보를 불러오는데 실패하였습니다.");
+                }
+
+            }
+            catch (HttpRequestException ex)
+            {
+                //네트워크 오류
+                Console.WriteLine($"네트워크 오류: {ex.Message}");
+                MessageBox.Show("서버에 연결할 수 없습니다. 나중에 다시 시도하세요.");
+            }
+            catch (Exception ex)
+            {
+                //알수 없는 오류
+                Console.WriteLine($"예외 발생: {ex.Message}");
+                MessageBox.Show("알 수 없는 오류가 발생했습니다.");
+            }
+        }
+        //Command 부분
+        
+
 
 
         public async Task GetHouses()
@@ -130,13 +188,20 @@ namespace Mataju.VMFolder
                             HouseId = house.HouseId,
                             HouseAdd = house.HouseAdd,
                             Province = house.Province,
-                            ImgPath = matchedImage // 이미지가 있으면 매핑, 없으면 null
+                            ImgPath = matchedImage, // 이미지가 있으면 매핑, 없으면 null
+                            CardClickCommand = new RelayCommand<int>(async parameter => 
+                            {
+                                await GetHousebyId(parameter);
+                            })
                         };
+                        //card.CardClickCommand = new RelayCommand<string>(parameter => GetHousebyId(parameter));
+                        Console.WriteLine(card.CardClickCommand);
                         cardList.Add(card);
                     }
 
                     // ObservableCollection에 바인딩
                     Cards = new ObservableCollection<CardModel>(cardList);
+                    
                     Console.WriteLine($"CardModel 변환 완료. 총 {Cards.Count}개 항목.");
                 }
                 else
@@ -159,5 +224,7 @@ namespace Mataju.VMFolder
                 MessageBox.Show("알 수 없는 오류가 발생했습니다.");
             }
         }
+
+        
     }
 }

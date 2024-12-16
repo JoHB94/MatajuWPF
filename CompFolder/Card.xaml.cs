@@ -56,5 +56,25 @@ namespace Mataju.CompFolder
             get => (ImageSource)GetValue(ImgPathProperty);
             set => SetValue(ImgPathProperty, value);
         }
+
+        // CardClickCommand 의존성 속성 추가
+        public static readonly DependencyProperty CardClickCommandProperty =
+            DependencyProperty.Register(nameof(CardClickCommand), typeof(ICommand), typeof(Card), new PropertyMetadata(null));
+
+        public ICommand CardClickCommand
+        {
+            get => (ICommand)GetValue(CardClickCommandProperty);
+            set => SetValue(CardClickCommandProperty, value);
+        }
+
+        //CommandParameter 의존성 속성 추가
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register("CommandParameter", typeof(object), typeof(Card), new PropertyMetadata(null));
+        public object CommandParameter
+        {
+            get { return GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
     }
 }
