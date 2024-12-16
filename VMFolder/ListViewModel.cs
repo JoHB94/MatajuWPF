@@ -9,25 +9,28 @@ using Newtonsoft.Json.Linq;
 using System.Windows;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
-
+using System.IO;
+using Mataju.Properties;
 
 namespace Mataju.VMFolder
 {
     internal class ListViewModel : ViewModelBase
     {
-        private ObservableCollection<HouseModel> _houses = new ObservableCollection<HouseModel>();
 
-        public ObservableCollection<HouseModel> Houses { 
-            get => _houses; 
+        private ObservableCollection<CardModel> _cards = new ObservableCollection<CardModel>();
+        public ObservableCollection<CardModel> Cards
+        {
+            get => _cards;
             set
             {
-                if (_houses != value)
+                if (_cards != value)
                 {
-                    _houses = value;
-                    OnPropertyChanged(nameof(Houses));
+                    _cards = value;
+                    OnPropertyChanged(nameof(Cards));
                 }
             }
         }
+
 
         public async Task GetHouses()
         {
@@ -35,22 +38,50 @@ namespace Mataju.VMFolder
             //API 엔드 포인트
             string apiUri = "http://3.38.45.83/api/House/all";
 
+            //string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
             try
             {
                 HttpResponseMessage responseMessage = await HttpManager.GetAsync(apiUri);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
-                    //JArray json = JArray.Parse(responseContent);
                     List<HouseModel> housesList = JsonConvert.DeserializeObject<List<HouseModel>>(responseContent);
-                    Console.WriteLine(housesList.Count);
 
-                    Houses = new ObservableCollection<HouseModel>(housesList);
-                    foreach (var house in Houses)
+                    //이미지 파일 경로 읽기
+                    string resourceFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Mataju\Resources");
+                    Console.WriteLine($"{apiUri}/{resourceFolder}");
+
+                    string[] imageFiles = Directory.GetFiles(resourceFolder, "*.*", SearchOption.TopDirectoryOnly)
+                                                   .Where(file => file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+                                                                  file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                                                                  file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
+                                                                  file.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase))
+                                                   .ToArray();
+                    // HouseModel -> CardModel변경
+                    List<CardModel> cardList = new List<CardModel>();
+                    for (int i = 0; i < housesList.Count; i++)
                     {
-                        Console.WriteLine(house);
+                        var house = housesList[i];
+                        // HouseId 기반 이미지 이름 패턴 생성 (예: "01-1", "02-1", ...)
+                        string targetPrefix = (i + 1).ToString("D2") + "-1";
+                        // 해당 HouseId에 맞는 첫 번째 이미지 찾기
+                        string matchedImage = imageFiles.FirstOrDefault(file =>
+                            Path.GetFileNameWithoutExtension(file).StartsWith(targetPrefix));
+
+                        var card = new CardModel
+                        {
+                            HouseId = house.HouseId,
+                            HouseAdd = house.HouseAdd,
+                            Province = house.Province,
+                            ImgPath = matchedImage // 이미지가 있으면 매핑, 없으면 null
+                        };
+                        cardList.Add(card);
                     }
 
+                    // ObservableCollection에 바인딩
+                    Cards = new ObservableCollection<CardModel>(cardList);
+                    Console.WriteLine($"CardModel 변환 완료. 총 {Cards.Count}개 항목.");
                 }
                 else
                 {

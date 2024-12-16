@@ -48,13 +48,13 @@ namespace Mataju.CompFolder
         }
 
         // Img 속성
-        public static readonly DependencyProperty ImgProperty =
-            DependencyProperty.Register(nameof(Img), typeof(ImageSource), typeof(Card), new PropertyMetadata(null));
+        public static readonly DependencyProperty ImgPathProperty =
+            DependencyProperty.Register(nameof(ImgPath), typeof(ImageSource), typeof(Card), new PropertyMetadata(null));
 
-        public ImageSource Img
+        public ImageSource ImgPath
         {
-            get => (ImageSource)GetValue(ImgProperty);
-            set => SetValue(ImgProperty, value);
+            get => (ImageSource)GetValue(ImgPathProperty);
+            set => SetValue(ImgPathProperty, value);
         }
     }
 }
