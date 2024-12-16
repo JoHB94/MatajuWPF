@@ -28,13 +28,13 @@ namespace Mataju.CompFolder
         //의존성 프로퍼티 추가 : name, add, img
 
         // Name 속성
-        public static readonly DependencyProperty HouseIdProperty =
-            DependencyProperty.Register(nameof(HouseId), typeof(string), typeof(Card), new PropertyMetadata("Default Name"));
+        public static readonly DependencyProperty ProvinceProperty =
+            DependencyProperty.Register(nameof(Province), typeof(string), typeof(Card), new PropertyMetadata("Default Province"));
 
-        public string HouseId
+        public string Province
         {
-            get => (string)GetValue(HouseIdProperty);
-            set => SetValue(HouseIdProperty, value);
+            get => (string)GetValue(ProvinceProperty);
+            set => SetValue(ProvinceProperty, value);
         }
 
         // Add 속성
