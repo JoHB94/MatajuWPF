@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Mataju.Properties;
 using System.Windows.Input;
+using Mataju.ViewFolder;
 
 namespace Mataju.VMFolder
 {
@@ -118,6 +119,10 @@ namespace Mataju.VMFolder
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
                     HouseModel houseModel = JsonConvert.DeserializeObject<HouseModel>(responseContent);
                     SelectedHouse = houseModel;
+                    Console.WriteLine(SelectedHouse);
+                    Detail detail = new Detail(SelectedHouse);
+                    
+                    detail.ShowDialog();
 
                 }
                 else
