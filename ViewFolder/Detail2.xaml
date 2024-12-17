@@ -1,0 +1,142 @@
+﻿<Window x:Class="Mataju.ViewFolder.Detail2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mataju.ViewFolder"
+        xmlns:comp ="clr-namespace:Mataju.CompFolder"
+        xmlns:vm="clr-namespace:Mataju.VMFolder"
+        mc:Ignorable="d"
+        Title="Detail2" Height="750" Width="1350">
+    <Window.DataContext>
+        <vm:ListViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <!--전체 완쪽-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--HouseModel 정보-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+
+                <!-- House 정보: 이름과 주소 -->
+                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Text="{Binding SelectedHouse.Province}"
+                    FontWeight="Black" FontSize="30" VerticalAlignment="Center" Margin="20"/>
+                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Text="{Binding SelectedHouse.HouseAdd}"
+                    FontWeight="Black" FontSize="18" VerticalAlignment="Center" Margin="20,0,20,0"/>
+                <!-- 이미지 표시 영역 -->
+                <ScrollViewer Grid.ColumnSpan="3" Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding ImagePaths}">
+                        <ItemsControl.ItemsPanel>
+                            <!-- UniformGrid로 이미지를 3열로 정렬 -->
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="3"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10">
+                                    <Image Source="{Binding}" Stretch="Uniform" HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+            <!--Unit DataGrid-->
+            <Grid Grid.Row="1">
+                <DataGrid x:Name="MyDataGrid" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=3}" Margin="10" RowHeight="30" FontSize="16" FontWeight="Black" Height="122">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="구분" Width="3*"/>
+                        <DataGridTextColumn Header="가격/월" Width="4*"/>
+                        <DataGridTextColumn Header="잔여 갯수" Width="3*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+        <!--전체 오른쪽-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <!--주의사항-->
+            <Grid Grid.Row="0">
+                <Border Grid.Row="2" BorderBrush="Gray" Margin="10" CornerRadius="10" BorderThickness="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="주의사항" FontWeight="Black" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Grid>
+                </Border>
+            </Grid>
+            <!--주문하기-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--주문하기 탭-->
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="주문 하기" FontWeight="Black" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TabControl Grid.Row="1">
+                        <TabItem Header="대" Width="165" Height="50">
+                            <Grid Background="#FFE5E5E5">
+                                <comp:EstimateTable/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="중" Width="165" Height="50">
+                            <Grid Background="#FFE5E5E5">
+                                <comp:EstimateTable/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="소" Width="165" Height="50">
+                            <Grid Background="#FFE5E5E5">
+                                <comp:EstimateTable/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+
+
+                </Grid>
+                <!--Buttons-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Margin="40,40" Content="돌아가기"/>
+                    <Button Grid.Column="1" Margin="40,40" Content="예약하기"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

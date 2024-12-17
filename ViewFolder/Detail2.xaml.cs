@@ -18,16 +18,16 @@ using System.Windows.Media.Imaging;
 namespace Mataju.ViewFolder
 {
     /// <summary>
-    /// Detail.xaml에 대한 상호 작용 논리
+    /// Detail2.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Detail : Window
+    public partial class Detail2 : Window
     {
-        public Detail(HouseModel houseModel)
+        public Detail2(HouseModel houseModel)
         {
             InitializeComponent();
             DataContext = new DetailViewModel(houseModel);
-            
-            string[] filteredImages = GetFilteredImages( houseModel.HouseId);
+
+            string[] filteredImages = GetFilteredImages(houseModel.HouseId);
 
             // DetailViewModel 생성 및 DataContext 설정
             DetailViewModel viewModel = new DetailViewModel(houseModel)
@@ -36,8 +36,7 @@ namespace Mataju.ViewFolder
             };
             DataContext = viewModel;
         }
-
-        private string[] GetFilteredImages( int houseId)
+        private string[] GetFilteredImages(int houseId)
         {
             string[] imageFiles = GlobalData.ImageFiles;
 
@@ -45,8 +44,5 @@ namespace Mataju.ViewFolder
             return imageFiles.Where(file => Path.GetFileNameWithoutExtension(file).StartsWith($"{houseIdPrefix}-"))
                              .ToArray();
         }
-
     }
-
-    
 }
