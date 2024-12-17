@@ -45,8 +45,7 @@
                                 <RowDefinition/>
                                 <RowDefinition Height="35"/>
                             </Grid.RowDefinitions>
-                            <comp:Card Grid.Row="0"  CardClickCommand="{Binding CardClickCommand}" CommandParameter="{Binding HouseId}"/>
-                            <Button Margin="10,0,10,13" Grid.Row="1" Command="{Binding CardClickCommand}" Content="확인하기" CommandParameter="{Binding HouseId}" />
+                            <comp:Card Grid.Row="0" />
                         </Grid>
                         
                     </DataTemplate>

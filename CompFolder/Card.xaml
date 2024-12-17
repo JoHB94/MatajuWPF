@@ -10,7 +10,7 @@
              d:DesignHeight="273"
              d:DesignWidth="210">
 
-    <Grid Height="240" Width="200" >
+    <Grid Height="240" Width="200" MouseDown="Card_MouseDown">
         <Grid.RowDefinitions>
             <RowDefinition Height="140" />
             <RowDefinition Height="*" />

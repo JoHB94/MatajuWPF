@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Mataju.ModelFolder;
+using Mataju.VMFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace Mataju.CompFolder
         public Card()
         {
             InitializeComponent();
+            
         }
        
         //의존성 프로퍼티 추가 : name, add, img
@@ -57,24 +60,17 @@ namespace Mataju.CompFolder
             set => SetValue(ImgPathProperty, value);
         }
 
-        // CardClickCommand 의존성 속성 추가
-        public static readonly DependencyProperty CardClickCommandProperty =
-            DependencyProperty.Register(nameof(CardClickCommand), typeof(ICommand), typeof(Card), new PropertyMetadata(null));
-
-        public ICommand CardClickCommand
+        //CardClick이벤트 리스너
+        private void Card_MouseDown(object sender, MouseEventArgs e)
         {
-            get => (ICommand)GetValue(CardClickCommandProperty);
-            set => SetValue(CardClickCommandProperty, value);
+            //클릭시 command 실행
+            var cardModel = (CardModel)this.DataContext;
+            if (cardModel.CardClickCommand.CanExecute(cardModel.HouseId)) // 파라미터 전달
+            {
+                cardModel.CardClickCommand.Execute(cardModel.HouseId); // 파라미터 전달
+            }
         }
-
-        //CommandParameter 의존성 속성 추가
-        public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register("CommandParameter", typeof(object), typeof(Card), new PropertyMetadata(null));
-        public object CommandParameter
-        {
-            get { return GetValue(CommandParameterProperty); }
-            set { SetValue(CommandParameterProperty, value); }
-        }
+        
 
     }
 }
