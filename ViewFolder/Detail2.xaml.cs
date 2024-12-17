@@ -23,18 +23,29 @@ namespace Mataju.ViewFolder
     public partial class Detail2 : Window
     {
         private readonly DetailViewModel _viewModel;
+        private readonly ListViewModel _viewModel2;
+        private readonly ListCombinedDetailViewModel _viewModel3;
+
         private readonly DetailService _service;
+
+        
         public Detail2(HouseModel houseModel)
         {
             InitializeComponent();
             //이미지 작업
             string[] filteredImages = GetFilteredImages(houseModel.HouseId);
             // ViewModel 초기화
-            _viewModel = new DetailViewModel(houseModel)
+            _viewModel = new DetailViewModel(houseModel);
+            
+            _viewModel2 = new ListViewModel();
+            // ListCombinedDetailViewModel 초기화 (UI에 뿌려질 데이터)
+            _viewModel3 = new ListCombinedDetailViewModel(_viewModel, _viewModel2)
             {
                 ImagePaths = filteredImages
-            };
-            DataContext = _viewModel;
+            }; 
+
+            // 두 개의 ViewModel을 하나로 묶어서 DataContext 설정
+            DataContext = _viewModel3;
 
             // Service 초기화
             _service = new DetailService();
