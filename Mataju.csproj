@@ -140,12 +140,16 @@
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalData.cs" />
+    <Compile Include="ModelFolder\BookingGridModel.cs" />
+    <Compile Include="ModelFolder\BookingModel.cs" />
     <Compile Include="ModelFolder\CardModel.cs" />
     <Compile Include="ModelFolder\HouseModel.cs" />
     <Compile Include="ModelFolder\HttpManager.cs" />
     <Compile Include="ModelFolder\LoginModel.cs" />
     <Compile Include="ModelFolder\ProvinceModel.cs" />
+    <Compile Include="ModelFolder\UnitModel.cs" />
     <Compile Include="ModelFolder\User.cs" />
+    <Compile Include="Service\DetailService.cs" />
     <Compile Include="ViewFolder\Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>
     </Compile>

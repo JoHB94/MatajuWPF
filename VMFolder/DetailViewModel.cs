@@ -1,6 +1,7 @@
 ﻿using Mataju.ModelFolder;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -43,19 +44,37 @@ namespace Mataju.VMFolder
             SelectedHouse = houseModel;
         }
 
-        private UnitModel _unitModel;
-        public UnitModel UnitModel
+        private ObservableCollection<UnitModel> _units;
+        public ObservableCollection<UnitModel> Units
         {
-            get => _unitModel;
+            get => _units;
             set
             {
-                if (_unitModel != value)
+                if (_units != value)
                 {
-                    _unitModel = value;
-                    OnPropertyChanged(nameof(UnitModel));
+                    _units = value;
+                    OnPropertyChanged(nameof(Units));
+                    OnPropertyChanged(nameof(GroupedUnits));
                 }
             }
         }
+
+        //DataGrid 읽기 전용
+        private ObservableCollection<BookingGridModel> _groupedUnits;
+        public ObservableCollection<BookingGridModel> GroupedUnits
+        {
+            get => _groupedUnits;
+            set
+            {
+                if(_groupedUnits != value)
+                {
+                    _groupedUnits = value;
+                    OnPropertyChanged(nameof(GroupedUnits));
+                }
+            }
+        }
+
+
 
     }
 }

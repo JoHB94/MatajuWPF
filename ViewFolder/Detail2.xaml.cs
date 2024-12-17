@@ -1,4 +1,5 @@
 ﻿using Mataju.ModelFolder;
+using Mataju.Service;
 using Mataju.VMFolder;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-
 namespace Mataju.ViewFolder
 {
     /// <summary>
@@ -22,19 +22,26 @@ namespace Mataju.ViewFolder
     /// </summary>
     public partial class Detail2 : Window
     {
+        private readonly DetailViewModel _viewModel;
+        private readonly DetailService _service;
         public Detail2(HouseModel houseModel)
         {
             InitializeComponent();
-            DataContext = new DetailViewModel(houseModel);
-
+            //이미지 작업
             string[] filteredImages = GetFilteredImages(houseModel.HouseId);
-
-            // DetailViewModel 생성 및 DataContext 설정
-            DetailViewModel viewModel = new DetailViewModel(houseModel)
+            // ViewModel 초기화
+            _viewModel = new DetailViewModel(houseModel)
             {
                 ImagePaths = filteredImages
             };
-            DataContext = viewModel;
+            DataContext = _viewModel;
+
+            // Service 초기화
+            _service = new DetailService();
+
+            // Units 속성 업데이트
+            LoadUnits();
+   
         }
         private string[] GetFilteredImages(int houseId)
         {
@@ -43,6 +50,11 @@ namespace Mataju.ViewFolder
             string houseIdPrefix = houseId.ToString("D2");
             return imageFiles.Where(file => Path.GetFileNameWithoutExtension(file).StartsWith($"{houseIdPrefix}-"))
                              .ToArray();
+        }
+
+        private async void LoadUnits()
+        {
+            await _service.GetUnitsByHouseId( _viewModel);
         }
     }
 }
