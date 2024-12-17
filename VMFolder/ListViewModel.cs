@@ -165,18 +165,6 @@ namespace Mataju.VMFolder
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
                     List<HouseModel> housesList = JsonConvert.DeserializeObject<List<HouseModel>>(responseContent);
 
-                    //이미지 파일 경로 읽기
-
-                   /* string resourceFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Mataju\Resources");
-                    Console.WriteLine($"{apiUri}/{resourceFolder}");
-
-                    string[] imageFiles = Directory.GetFiles(resourceFolder, "*.*", SearchOption.TopDirectoryOnly)
-                                                   .Where(file => file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
-                                                                  file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
-                                                                  file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
-                                                                  file.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase))
-                                                   .ToArray();*/
-                    // HouseModel -> CardModel변경 
                     List<CardModel> cardList = new List<CardModel>();
                     for (int i = 0; i < housesList.Count; i++)
                     {

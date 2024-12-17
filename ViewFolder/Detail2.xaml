@@ -10,6 +10,7 @@
         Title="Detail2" Height="750" Width="1350">
     <Window.DataContext>
         <vm:ListViewModel/>
+        
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -62,12 +63,12 @@
             </Grid>
             <!--Unit DataGrid-->
             <Grid Grid.Row="1">
-                <DataGrid x:Name="MyDataGrid" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=3}" Margin="10" RowHeight="30" FontSize="16" FontWeight="Black" Height="122">
-
+                <DataGrid x:Name="MyDataGrid" ItemsSource="{Binding GroupedUnits}" CanUserAddRows="False"
+                          AutoGenerateColumns="False" Margin="10" RowHeight="30" FontSize="16" FontWeight="Black" Height="122">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="구분" Width="3*"/>
-                        <DataGridTextColumn Header="가격/월" Width="4*"/>
-                        <DataGridTextColumn Header="잔여 갯수" Width="3*"/>
+                        <DataGridTextColumn Header="구분" Width="3*" Binding="{Binding Size}" />
+                        <DataGridTextColumn Header="가격/월" Width="4*" Binding="{Binding Price}" />
+                        <DataGridTextColumn Header="잔여 갯수" Width="3*" Binding="{Binding AvailableCount}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

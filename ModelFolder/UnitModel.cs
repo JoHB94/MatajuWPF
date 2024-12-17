@@ -19,11 +19,14 @@ namespace Mataju.ModelFolder
         [JsonProperty("size")]
         public string Size { get; set; }
 
+        [JsonProperty("status")]
+        public string Status { get; set; }  
+
         [JsonProperty("startDate")]
-        public string StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [JsonProperty("endDate")]
-        public string EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [JsonProperty("price")]
         public int Price { get; set; }
