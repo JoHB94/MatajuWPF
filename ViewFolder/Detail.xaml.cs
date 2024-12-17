@@ -41,12 +41,7 @@ namespace Mataju.ViewFolder
 
         private string[] GetFilteredImages(string resourceFolder, int houseId)
         {
-            string[] imageFiles = Directory.GetFiles(resourceFolder, "*.*", SearchOption.TopDirectoryOnly)
-                                           .Where(file => file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
-                                                          file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
-                                                          file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
-                                                          file.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase))
-                                           .ToArray();
+            string[] imageFiles = GlobalData.ImageFiles;
 
             string houseIdPrefix = houseId.ToString("D2");
             return imageFiles.Where(file => Path.GetFileNameWithoutExtension(file).StartsWith($"{houseIdPrefix}-"))
