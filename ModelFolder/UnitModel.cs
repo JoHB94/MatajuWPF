@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mataju.ModelFolder
 {
-    internal class UnitModel : ViewModelBase
+    public class UnitModel : ViewModelBase
     {
         [JsonProperty("id")]
         public int Id { get; set; }

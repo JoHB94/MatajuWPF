@@ -11,7 +11,7 @@ namespace Mataju.VMFolder
     public class DetailViewModel : ViewModelBase
     {
         private HouseModel _selectedHouse;
-        
+
 
         public HouseModel SelectedHouse
         {
@@ -41,6 +41,20 @@ namespace Mataju.VMFolder
         public DetailViewModel(HouseModel houseModel)
         {
             SelectedHouse = houseModel;
+        }
+
+        private UnitModel _unitModel;
+        public UnitModel UnitModel
+        {
+            get => _unitModel;
+            set
+            {
+                if (_unitModel != value)
+                {
+                    _unitModel = value;
+                    OnPropertyChanged(nameof(UnitModel));
+                }
+            }
         }
 
     }
