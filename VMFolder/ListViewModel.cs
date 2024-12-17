@@ -14,6 +14,7 @@ using Mataju.Properties;
 using System.Windows.Input;
 using Mataju.ViewFolder;
 
+
 namespace Mataju.VMFolder
 {
     internal class ListViewModel : ViewModelBase
@@ -148,9 +149,6 @@ namespace Mataju.VMFolder
         }
         //Command 부분
         
-
-
-
         public async Task GetHouses()
         {
             Console.WriteLine("GetHouses 호출!");
@@ -168,7 +166,8 @@ namespace Mataju.VMFolder
                     List<HouseModel> housesList = JsonConvert.DeserializeObject<List<HouseModel>>(responseContent);
 
                     //이미지 파일 경로 읽기
-                    string resourceFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Mataju\Resources");
+
+                   /* string resourceFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Mataju\Resources");
                     Console.WriteLine($"{apiUri}/{resourceFolder}");
 
                     string[] imageFiles = Directory.GetFiles(resourceFolder, "*.*", SearchOption.TopDirectoryOnly)
@@ -176,7 +175,7 @@ namespace Mataju.VMFolder
                                                                   file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
                                                                   file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
                                                                   file.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase))
-                                                   .ToArray();
+                                                   .ToArray();*/
                     // HouseModel -> CardModel변경 
                     List<CardModel> cardList = new List<CardModel>();
                     for (int i = 0; i < housesList.Count; i++)
@@ -185,7 +184,7 @@ namespace Mataju.VMFolder
                         // HouseId 기반 이미지 이름 패턴 생성 (예: "01-1", "02-1", ...)
                         string targetPrefix = (i + 1).ToString("D2") + "-1";
                         // 해당 HouseId에 맞는 첫 번째 이미지 찾기
-                        string matchedImage = imageFiles.FirstOrDefault(file =>
+                        string matchedImage = GlobalData.ImageFiles.FirstOrDefault(file =>
                             Path.GetFileNameWithoutExtension(file).StartsWith(targetPrefix));
 
                         var card = new CardModel
