@@ -17,7 +17,7 @@ using Mataju.ViewFolder;
 
 namespace Mataju.VMFolder
 {
-    internal class ListViewModel : ViewModelBase
+    public class ListViewModel : ViewModelBase
     {
         //Card Observable
         private ObservableCollection<CardModel> _cards = new ObservableCollection<CardModel>();

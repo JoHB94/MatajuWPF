@@ -8,10 +8,7 @@
         xmlns:vm="clr-namespace:Mataju.VMFolder"
         mc:Ignorable="d"
         Title="Detail2" Height="750" Width="1350">
-    <Window.DataContext>
-        <vm:ListViewModel/>
-        
-    </Window.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
@@ -37,9 +34,9 @@
                 </Grid.RowDefinitions>
 
                 <!-- House 정보: 이름과 주소 -->
-                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Text="{Binding SelectedHouse.Province}"
+                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Text="{Binding ListViewModel.Province}"
                     FontWeight="Black" FontSize="30" VerticalAlignment="Center" Margin="20"/>
-                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Text="{Binding SelectedHouse.HouseAdd}"
+                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Text="{Binding ListViewModel.HouseAdd}"
                     FontWeight="Black" FontSize="18" VerticalAlignment="Center" Margin="20,0,20,0"/>
                 <!-- 이미지 표시 영역 -->
                 <ScrollViewer Grid.ColumnSpan="3" Grid.Row="2" VerticalScrollBarVisibility="Auto">
@@ -63,7 +60,7 @@
             </Grid>
             <!--Unit DataGrid-->
             <Grid Grid.Row="1">
-                <DataGrid x:Name="MyDataGrid" ItemsSource="{Binding GroupedUnits}" CanUserAddRows="False"
+                <DataGrid x:Name="MyDataGrid" ItemsSource="{Binding DetailViewModel.GroupedUnits}" CanUserAddRows="False"
                           AutoGenerateColumns="False" Margin="10" RowHeight="30" FontSize="16" FontWeight="Black" Height="122">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="구분" Width="3*" Binding="{Binding Size}" />

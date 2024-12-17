@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Mataju.ModelFolder
 {
-    internal class CardModel : ViewModelBase
+    public class CardModel : ViewModelBase
     {
         public int HouseId { get; set; }
         public string HouseAdd { get; set; }
