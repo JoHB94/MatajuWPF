@@ -133,6 +133,9 @@
     <Compile Include="CompFolder\Card.xaml.cs">
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CompFolder\EstimateTable.xaml.cs">
+      <DependentUpon>EstimateTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CompFolder\Header.xaml.cs">
       <DependentUpon>Header.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,9 @@
     <Compile Include="ModelFolder\User.cs" />
     <Compile Include="ViewFolder\Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFolder\Detail2.xaml.cs">
+      <DependentUpon>Detail2.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewFolder\Join.xaml.cs">
       <DependentUpon>Join.xaml</DependentUpon>
@@ -166,6 +172,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CompFolder\EstimateTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CompFolder\Header.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +193,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ViewFolder\Detail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewFolder\Detail2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
