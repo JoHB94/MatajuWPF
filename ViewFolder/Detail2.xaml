@@ -110,7 +110,8 @@
                         <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="주문 하기" FontWeight="Black" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TabControl Grid.Row="1" ItemsSource="{Binding GroupedUnits}"  SelectedIndex="0">
+                    <TabControl Grid.Row="1" ItemsSource="{Binding GroupedUnits}"  SelectedIndex="0" 
+                                SelectedItem="{Binding SelectedEstimateTable}">
                         <!-- 탭 헤더 템플릿 -->
                         <TabControl.ItemTemplate>
                             <DataTemplate>
@@ -141,7 +142,8 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Margin="40,40" Content="돌아가기"/>
-                    <Button Grid.Column="1" Margin="40,40" Content="예약하기"/>
+                    <Button Command="{Binding BookCommand}" 
+                        Grid.Column="1" Margin="40,40" Content="예약하기"/>
                 </Grid>
             </Grid>
         </Grid>

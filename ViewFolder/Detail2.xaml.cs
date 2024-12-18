@@ -31,7 +31,7 @@ namespace Mataju.ViewFolder
         {
             InitializeComponent();
             //이미지 작업
-            _detailVM = new DetailViewModel()
+            _detailVM = new DetailViewModel(houseId)
             {
                 ImagePaths = GetFilteredImages(houseId)
             };

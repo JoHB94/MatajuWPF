@@ -151,9 +151,6 @@
     <Compile Include="ModelFolder\User.cs" />
     <Compile Include="Service\DetailService.cs" />
     <Compile Include="Service\ListService.cs" />
-    <Compile Include="ViewFolder\Detail.xaml.cs">
-      <DependentUpon>Detail.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewFolder\Detail2.xaml.cs">
       <DependentUpon>Detail2.xaml</DependentUpon>
     </Compile>
@@ -198,10 +195,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ViewFolder\Detail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ViewFolder\Detail2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
