@@ -6,11 +6,7 @@
              xmlns:local="clr-namespace:Mataju.CompFolder"
              xmlns:vm="clr-namespace:Mataju.VMFolder"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-
-    <UserControl.DataContext>
-        <vm:EstimateTableViewModel />
-    </UserControl.DataContext>
+             d:DesignHeight="300" d:DesignWidth="450">
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -26,7 +22,12 @@
 
         <!-- 구분 텍스트 Block -->
         <TextBlock Grid.Row="0" Grid.Column="0" Text="구분" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Size}" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+        <TextBlock Grid.Row="0" Grid.Column="1"  
+                   Margin="15,0" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   FontWeight="Black" FontSize="15">
+            <Run Text="{Binding Size}"/>
+            <Run Text="사이즈"/>
+        </TextBlock>
 
         <!-- 시작일자 DatePicker -->
         <TextBlock Grid.Row="1" Grid.Column="0" Text="시작 일자" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
@@ -40,7 +41,9 @@
 
         <!-- 총 비용 -->
         <TextBlock Grid.Row="3" Grid.Column="0" Text="총 비용" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TotalCost, StringFormat=\{0:C\}}" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TotalCost, StringFormat='₩{0:N0}'}" 
+                   Margin="8" TextAlignment="Center" VerticalAlignment="Center" 
+                   FontWeight="Black" HorizontalAlignment="Right" Foreground="Red" FontSize="15"/>
     </Grid>
 
 </UserControl>

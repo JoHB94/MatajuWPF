@@ -168,7 +168,6 @@
     </Compile>
     <Compile Include="VMFolder\DetailViewModel.cs" />
     <Compile Include="VMFolder\EstimateTableViewModel .cs" />
-    <Compile Include="VMFolder\ListCombinedDetailViewModel.cs" />
     <Compile Include="VMFolder\ListViewModel.cs" />
     <Compile Include="VMFolder\LoginViewModel.cs" />
     <Compile Include="VMFolder\PasswordExtends.cs" />
