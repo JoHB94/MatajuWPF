@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Mataju.ModelFolder
 {
-    internal class BookingModel
+    public class BookingModel
     {
         [JsonProperty("userId")]
         public int UserId {  get; set; }
@@ -22,7 +22,7 @@ namespace Mataju.ModelFolder
         public string StartDate { get; set; }
 
         [JsonProperty("durationDays")]
-        public string DurationDays { get; set; }
+        public int? DurationDays { get; set; }
 
         [JsonProperty("userNote")]
         public string UserNote { get; set; }

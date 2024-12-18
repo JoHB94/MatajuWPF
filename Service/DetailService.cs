@@ -9,16 +9,66 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Collections.ObjectModel;
+using Mataju.ViewFolder;
 
 namespace Mataju.Service
 {
     public class DetailService
     {
-        public async Task GetUnitsByHouseId( DetailViewModel viewModel)
+        private readonly DetailViewModel detailViewModel;
+
+        public DetailService(DetailViewModel viewModel)
         {
-            var parameter = viewModel.SelectedHouse.HouseId;
+            this.detailViewModel = viewModel;
+        }
+
+        public async Task GetHousebyId(int houseId)
+        {
+            Console.WriteLine("GetHousebyId 호출!");
+            //var parameter = detailViewModel.SelectedHouse.HouseId;
+
             //API 엔드 포인트
-            string apiUri = string.Format("http://3.38.45.83/api/Unit/house/{0}", parameter);
+            string apiUri = string.Format("http://3.38.45.83/api/House/{0}", houseId);
+
+            try
+            {
+                HttpResponseMessage responseMessage = await HttpManager.GetAsync(apiUri);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string responseContent = await responseMessage.Content.ReadAsStringAsync();
+                    HouseModel houseModel = JsonConvert.DeserializeObject<HouseModel>(responseContent);
+                    detailViewModel.SelectedHouse = houseModel;
+                    Console.WriteLine(detailViewModel.SelectedHouse);
+                    
+
+                }
+                else
+                {
+                    string errorContent = await responseMessage.Content.ReadAsStringAsync();
+                    Console.WriteLine($"오류 상태: {responseMessage.StatusCode}, 내용: {errorContent}");
+                    MessageBox.Show("house 정보를 불러오는데 실패하였습니다.");
+                }
+
+            }
+            catch (HttpRequestException ex)
+            {
+                //네트워크 오류
+                Console.WriteLine($"네트워크 오류: {ex.Message}");
+                MessageBox.Show("서버에 연결할 수 없습니다. 나중에 다시 시도하세요.");
+            }
+            catch (Exception ex)
+            {
+                //알수 없는 오류
+                Console.WriteLine($"예외 발생: {ex.Message}");
+                MessageBox.Show("알 수 없는 오류가 발생했습니다.");
+            }
+        }
+
+
+        public async Task GetUnitsByHouseId(int houseId)
+        {
+            //API 엔드 포인트
+            string apiUri = string.Format("http://3.38.45.83/api/Unit/house/{0}", houseId);
 
 
             try
@@ -32,8 +82,8 @@ namespace Mataju.Service
                     
 
                     List<BookingGridModel> bookingGrid = GroupUnitsBySize(unitList);
-                    viewModel.GroupedUnits = new ObservableCollection<BookingGridModel>(bookingGrid);
-                    Console.WriteLine($"GroupedUnit 총 {viewModel.GroupedUnits.Count}개 항목.");
+                    detailViewModel.GroupedUnits = new ObservableCollection<BookingGridModel>(bookingGrid);
+                    Console.WriteLine($"GroupedUnit 총 {detailViewModel.GroupedUnits.Count}개 항목.");
                 }
                 else
                 {
@@ -84,6 +134,45 @@ namespace Mataju.Service
 
             // 결과를 List로 변환하여 반환
             return grouped.Values.ToList();
+        }
+
+        //예약 신청 메소드
+        public static async Task<bool> BookingUnit(BookingModel booking)
+        {
+            //API 엔드 포인트
+            string apiUri = "http://3.38.45.83/api/bookings";
+
+            try
+            {
+                HttpResponseMessage responseMessage = await HttpManager.PostAsync(apiUri, booking);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    string responseContent = await responseMessage.Content.ReadAsStringAsync();
+                    MessageBox.Show($"정말 예약하시겠습니까?{booking}");
+                    return true;
+                }
+                else
+                {
+                    string errorContent = await responseMessage.Content.ReadAsStringAsync();
+                    Console.WriteLine($"오류 상태: {responseMessage.StatusCode}, 내용: {errorContent}");
+                    MessageBox.Show($"unit 정보를 예약하는데 실패하였습니다.{errorContent}");
+                    return false;
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                //네트워크 오류
+                Console.WriteLine($"네트워크 오류: {ex.Message}");
+                MessageBox.Show("서버에 연결할 수 없습니다. 나중에 다시 시도하세요.");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                //알수 없는 오류
+                Console.WriteLine($"예외 발생: {ex.Message}");
+                MessageBox.Show("알 수 없는 오류가 발생했습니다.");
+                return false;
+            }
         }
     }
 

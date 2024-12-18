@@ -18,6 +18,7 @@ namespace Mataju.VMFolder
     {
         public static string token = null;
         public static string nickname = null;
+        public static int userId = -1;
 
         private LoginModel _loginModel = new LoginModel();
 
@@ -56,6 +57,7 @@ namespace Mataju.VMFolder
                     JObject json = JObject.Parse(responseContent);
                     token = json["token"]?.ToString();
                     nickname = json["nickname"]?.ToString();
+                    userId = Convert.ToInt32(json["userId"] ?? 0);
                     Console.WriteLine($"token: {token}");
                     Console.WriteLine($"nickname: {nickname}");
 

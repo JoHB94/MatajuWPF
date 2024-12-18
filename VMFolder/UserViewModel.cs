@@ -45,10 +45,11 @@ namespace Mataju.VMFolder
      
             //API 엔드포인트
             string apiUrl = "http://3.38.45.83/api/User/register";
+            string aws_apiUrl = "http://15.164.226.158/api/User/register";
             try
             {
                  //POST 요청 보내고 응답 받기
-                HttpResponseMessage responseMessage = await HttpManager.PostAsync(apiUrl, User);
+                HttpResponseMessage responseMessage = await HttpManager.PostAsync(aws_apiUrl, User);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();

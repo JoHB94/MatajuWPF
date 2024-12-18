@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       Height="750" Width="1350"
       Title="List"
-      Loaded="Page_Loaded">
+      >
     <Window.DataContext>
         <vm:ListViewModel/>
     </Window.DataContext>

@@ -1,4 +1,5 @@
-﻿using Mataju.VMFolder;
+﻿using Mataju.Service;
+using Mataju.VMFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,18 +22,31 @@ namespace Mataju.ViewFolder
     /// </summary>
     public partial class List : Window
     {
-        private ListViewModel _viewModel = new ListViewModel();
+        private readonly ListService listService;
+        private readonly ListViewModel _viewModel; 
         public List()
         {
             InitializeComponent();
+            _viewModel = new ListViewModel();
+            listService = new ListService();
             this.DataContext = _viewModel;
-
+            // 창이 로드되었을 때 비동기적으로 데이터 가져오기
+            Loaded += async (s, e) => await Page_LoadedAsync();
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private async Task Page_LoadedAsync()
         {
-            // GetHouses 메서드 호출
-            await _viewModel.GetHouses();
+            try
+            {
+                // GetHouses 호출
+                await listService.GetHouses(_viewModel);
+            }
+            catch (Exception ex)
+            {
+                // 오류 발생 시 사용자에게 알림
+                Console.WriteLine($"Page_Loaded 오류: {ex.Message}");
+                MessageBox.Show("데이터를 불러오는 중 문제가 발생했습니다. 나중에 다시 시도해주세요.");
+            }
         }
     }
 }

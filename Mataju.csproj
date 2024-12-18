@@ -150,9 +150,7 @@
     <Compile Include="ModelFolder\UnitModel.cs" />
     <Compile Include="ModelFolder\User.cs" />
     <Compile Include="Service\DetailService.cs" />
-    <Compile Include="ViewFolder\Detail.xaml.cs">
-      <DependentUpon>Detail.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Service\ListService.cs" />
     <Compile Include="ViewFolder\Detail2.xaml.cs">
       <DependentUpon>Detail2.xaml</DependentUpon>
     </Compile>
@@ -166,7 +164,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMFolder\DetailViewModel.cs" />
-    <Compile Include="VMFolder\ListCombinedDetailViewModel.cs" />
+    <Compile Include="VMFolder\EstimateTableViewModel .cs" />
     <Compile Include="VMFolder\ListViewModel.cs" />
     <Compile Include="VMFolder\LoginViewModel.cs" />
     <Compile Include="VMFolder\PasswordExtends.cs" />
@@ -197,10 +195,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ViewFolder\Detail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ViewFolder\Detail2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

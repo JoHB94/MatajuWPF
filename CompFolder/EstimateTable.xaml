@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Mataju.CompFolder"
+             xmlns:vm="clr-namespace:Mataju.VMFolder"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    
+             d:DesignHeight="300" d:DesignWidth="450">
+
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -19,29 +20,30 @@
             <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
+        <!-- 구분 텍스트 Block -->
         <TextBlock Grid.Row="0" Grid.Column="0" Text="구분" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="시작 일자" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="끝 일자" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="총 비용" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+        <TextBlock Grid.Row="0" Grid.Column="1"  
+                   Margin="15,0" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   FontWeight="Black" FontSize="15">
+            <Run Text="{Binding Size}"/>
+            <Run Text="사이즈"/>
+        </TextBlock>
 
-        <TextBlock x:Name="valueTextBlock" Grid.Row="0" Grid.Column="1" Margin="8"/>
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Margin="8"/>
-            <DatePicker Grid.Column="1" Margin="8" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        </Grid>
-        <Grid Grid.Row="2" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Margin="8"/>
-            <DatePicker Grid.Column="1" Margin="8" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        </Grid>
-        <TextBlock Grid.Row="3" Grid.Column="1" Margin="8"/>
+        <!-- 시작일자 DatePicker -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="시작 일자" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+        <DatePicker Grid.Row="1" Grid.Column="1" Margin="8" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    SelectedDate="{Binding StartDate}" />
+
+        <!-- 끝일자 DatePicker -->
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="끝 일자" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+        <DatePicker Grid.Row="2" Grid.Column="1" Margin="8" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    SelectedDate="{Binding EndDate}" />
+
+        <!-- 총 비용 -->
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="총 비용" Margin="8" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Black"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TotalCost, StringFormat='₩{0:N0}'}" 
+                   Margin="8" TextAlignment="Center" VerticalAlignment="Center" 
+                   FontWeight="Black" HorizontalAlignment="Right" Foreground="Red" FontSize="15"/>
     </Grid>
-    
+
 </UserControl>

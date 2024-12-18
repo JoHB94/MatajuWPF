@@ -22,36 +22,29 @@ namespace Mataju.ViewFolder
     /// </summary>
     public partial class Detail2 : Window
     {
-        private readonly DetailViewModel _viewModel;
-        private readonly ListViewModel _viewModel2;
-        private readonly ListCombinedDetailViewModel _viewModel3;
+        private readonly DetailViewModel _detailVM;
 
         private readonly DetailService _service;
 
         
-        public Detail2(HouseModel houseModel)
+        public Detail2(int houseId)
         {
             InitializeComponent();
             //이미지 작업
-            string[] filteredImages = GetFilteredImages(houseModel.HouseId);
-            // ViewModel 초기화
-            _viewModel = new DetailViewModel(houseModel);
-            
-            _viewModel2 = new ListViewModel();
-            // ListCombinedDetailViewModel 초기화 (UI에 뿌려질 데이터)
-            _viewModel3 = new ListCombinedDetailViewModel(_viewModel, _viewModel2)
+            _detailVM = new DetailViewModel(houseId)
             {
-                ImagePaths = filteredImages
-            }; 
+                ImagePaths = GetFilteredImages(houseId)
+            };
+            _service = new DetailService(_detailVM);
+            LoadHouse(houseId);
 
             // 두 개의 ViewModel을 하나로 묶어서 DataContext 설정
-            DataContext = _viewModel3;
+            DataContext = _detailVM;
 
-            // Service 초기화
-            _service = new DetailService();
+            
 
             // Units 속성 업데이트
-            LoadUnits();
+            LoadUnits(houseId);
    
         }
         private string[] GetFilteredImages(int houseId)
@@ -63,9 +56,14 @@ namespace Mataju.ViewFolder
                              .ToArray();
         }
 
-        private async void LoadUnits()
+        private async void LoadUnits(int houseId)
         {
-            await _service.GetUnitsByHouseId( _viewModel);
+            await _service.GetUnitsByHouseId(houseId);
+        }
+
+        private async void LoadHouse(int houseId)
+        {
+            await _service.GetHousebyId(houseId);
         }
     }
 }

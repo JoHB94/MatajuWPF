@@ -12,8 +12,6 @@ using Newtonsoft.Json;
 using System.IO;
 using Mataju.Properties;
 using System.Windows.Input;
-using Mataju.ViewFolder;
-
 
 namespace Mataju.VMFolder
 {
@@ -89,7 +87,7 @@ namespace Mataju.VMFolder
             }
         }
 
-        //HouseModel 변경감지
+        //HouseModel 변경감지 => 삭제 해 주세요
         private HouseModel _selectedHouse;
         public HouseModel SelectedHouse
         {
@@ -103,120 +101,5 @@ namespace Mataju.VMFolder
                 }
             }
         }
-
-
-        public async Task GetHousebyId(object parameter)
-        {
-            Console.WriteLine("GetHousebyId 호출!");
-
-            //API 엔드 포인트
-            string apiUri = string.Format("http://3.38.45.83/api/House/{0}", parameter);
-
-            try
-            {
-                HttpResponseMessage responseMessage = await HttpManager.GetAsync(apiUri);
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    string responseContent = await responseMessage.Content.ReadAsStringAsync();
-                    HouseModel houseModel = JsonConvert.DeserializeObject<HouseModel>(responseContent);
-                    SelectedHouse = houseModel;
-                    Console.WriteLine(SelectedHouse);
-                    Detail2 detail = new Detail2(SelectedHouse);
-                    
-                    detail.ShowDialog();
-
-                }
-                else
-                {
-                    string errorContent = await responseMessage.Content.ReadAsStringAsync();
-                    Console.WriteLine($"오류 상태: {responseMessage.StatusCode}, 내용: {errorContent}");
-                    MessageBox.Show("house 정보를 불러오는데 실패하였습니다.");
-                }
-
-            }
-            catch (HttpRequestException ex)
-            {
-                //네트워크 오류
-                Console.WriteLine($"네트워크 오류: {ex.Message}");
-                MessageBox.Show("서버에 연결할 수 없습니다. 나중에 다시 시도하세요.");
-            }
-            catch (Exception ex)
-            {
-                //알수 없는 오류
-                Console.WriteLine($"예외 발생: {ex.Message}");
-                MessageBox.Show("알 수 없는 오류가 발생했습니다.");
-            }
-        }
-        //Command 부분
-        
-        public async Task GetHouses()
-        {
-            Console.WriteLine("GetHouses 호출!");
-            //API 엔드 포인트
-            string apiUri = "http://3.38.45.83/api/House/all";
-
-            //string basePath = AppDomain.CurrentDomain.BaseDirectory;
-
-            try
-            {
-                HttpResponseMessage responseMessage = await HttpManager.GetAsync(apiUri);
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    string responseContent = await responseMessage.Content.ReadAsStringAsync();
-                    List<HouseModel> housesList = JsonConvert.DeserializeObject<List<HouseModel>>(responseContent);
-
-                    List<CardModel> cardList = new List<CardModel>();
-                    for (int i = 0; i < housesList.Count; i++)
-                    {
-                        var house = housesList[i];
-                        // HouseId 기반 이미지 이름 패턴 생성 (예: "01-1", "02-1", ...)
-                        string targetPrefix = (i + 1).ToString("D2") + "-1";
-                        // 해당 HouseId에 맞는 첫 번째 이미지 찾기
-                        string matchedImage = GlobalData.ImageFiles.FirstOrDefault(file =>
-                            Path.GetFileNameWithoutExtension(file).StartsWith(targetPrefix));
-
-                        var card = new CardModel
-                        {
-                            HouseId = house.HouseId,
-                            HouseAdd = house.HouseAdd,
-                            Province = house.Province,
-                            ImgPath = matchedImage, // 이미지가 있으면 매핑, 없으면 null
-                            CardClickCommand = new RelayCommand<int>(async parameter => 
-                            {
-                                await GetHousebyId(parameter);
-                            })
-                        };
-                        //card.CardClickCommand = new RelayCommand<string>(parameter => GetHousebyId(parameter));
-                        Console.WriteLine(card.CardClickCommand);
-                        cardList.Add(card);
-                    }
-
-                    // ObservableCollection에 바인딩
-                    Cards = new ObservableCollection<CardModel>(cardList);
-                    
-                    Console.WriteLine($"CardModel 변환 완료. 총 {Cards.Count}개 항목.");
-                }
-                else
-                {
-                    string errorContent = await responseMessage.Content.ReadAsStringAsync();
-                    Console.WriteLine($"오류 상태: {responseMessage.StatusCode}, 내용: {errorContent}");
-                    MessageBox.Show("house 정보를 불러오는데 실패하였습니다.");
-                }
-            }
-            catch (HttpRequestException ex)
-            {
-                //네트워크 오류
-                Console.WriteLine($"네트워크 오류: {ex.Message}");
-                MessageBox.Show("서버에 연결할 수 없습니다. 나중에 다시 시도하세요.");
-            }
-            catch(Exception ex) 
-            {
-                //알수 없는 오류
-                Console.WriteLine($"예외 발생: {ex.Message}");
-                MessageBox.Show("알 수 없는 오류가 발생했습니다.");
-            }
-        }
-
-        
     }
 }
