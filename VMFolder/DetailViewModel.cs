@@ -11,37 +11,26 @@ namespace Mataju.VMFolder
 {
     public class DetailViewModel : ViewModelBase
     {
+
+        //HouseModel 변경감지
         private HouseModel _selectedHouse;
-
-
         public HouseModel SelectedHouse
         {
             get => _selectedHouse;
             set
             {
-                _selectedHouse = value;
-                OnPropertyChanged(nameof(SelectedHouse));
-            }
-        }
-
-        private string[] _imagePaths;
-        // ImagePaths 속성 추가
-        public string[] ImagePaths
-        {
-            get => _imagePaths;
-            set
-            {
-                if (_imagePaths != value)
+                if (_selectedHouse != value)
                 {
-                    _imagePaths = value;
-                    OnPropertyChanged(nameof(ImagePaths));
+                    _selectedHouse = value;
+                    OnPropertyChanged(nameof(SelectedHouse)); // 변경 통지
                 }
             }
         }
 
-        public DetailViewModel(HouseModel houseModel)
+
+        public DetailViewModel()
         {
-            SelectedHouse = houseModel;
+            
         }
 
         private ObservableCollection<UnitModel> _units;
@@ -74,7 +63,19 @@ namespace Mataju.VMFolder
             }
         }
 
-
+        private string[] _imagePaths;
+        public string[] ImagePaths
+        {
+            get => _imagePaths;
+            set
+            {
+                if (_imagePaths != value)
+                {
+                    _imagePaths = value;
+                    OnPropertyChanged(nameof(ImagePaths));
+                }
+            }
+        }
 
     }
 }

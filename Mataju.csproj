@@ -150,6 +150,7 @@
     <Compile Include="ModelFolder\UnitModel.cs" />
     <Compile Include="ModelFolder\User.cs" />
     <Compile Include="Service\DetailService.cs" />
+    <Compile Include="Service\ListService.cs" />
     <Compile Include="ViewFolder\Detail.xaml.cs">
       <DependentUpon>Detail.xaml</DependentUpon>
     </Compile>
@@ -166,6 +167,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMFolder\DetailViewModel.cs" />
+    <Compile Include="VMFolder\EstimateTableViewModel .cs" />
     <Compile Include="VMFolder\ListCombinedDetailViewModel.cs" />
     <Compile Include="VMFolder\ListViewModel.cs" />
     <Compile Include="VMFolder\LoginViewModel.cs" />

@@ -34,9 +34,9 @@
                 </Grid.RowDefinitions>
 
                 <!-- House 정보: 이름과 주소 -->
-                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Text="{Binding ListViewModel.Province}"
+                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Text="{Binding SelectedHouse.Province}"
                     FontWeight="Black" FontSize="30" VerticalAlignment="Center" Margin="20"/>
-                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Text="{Binding ListViewModel.HouseAdd}"
+                <TextBlock Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Text="{Binding SelectedHouse.HouseAdd}"
                     FontWeight="Black" FontSize="18" VerticalAlignment="Center" Margin="20,0,20,0"/>
                 <!-- 이미지 표시 영역 -->
                 <ScrollViewer Grid.ColumnSpan="3" Grid.Row="2" VerticalScrollBarVisibility="Auto">
@@ -50,8 +50,7 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10">
-                                    <Image Source="{Binding}" Stretch="Uniform" HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" />
+                                    <Image Source="{Binding}"  Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                                 </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -60,7 +59,7 @@
             </Grid>
             <!--Unit DataGrid-->
             <Grid Grid.Row="1">
-                <DataGrid x:Name="MyDataGrid" ItemsSource="{Binding DetailViewModel.GroupedUnits}" CanUserAddRows="False"
+                <DataGrid x:Name="MyDataGrid" ItemsSource="{Binding GroupedUnits}" CanUserAddRows="False"
                           AutoGenerateColumns="False" Margin="10" RowHeight="30" FontSize="16" FontWeight="Black" Height="122">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="구분" Width="3*" Binding="{Binding Size}" />
@@ -105,22 +104,16 @@
                         <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="주문 하기" FontWeight="Black" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TabControl Grid.Row="1">
-                        <TabItem Header="대" Width="165" Height="50">
-                            <Grid Background="#FFE5E5E5">
-                                <comp:EstimateTable/>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="중" Width="165" Height="50">
-                            <Grid Background="#FFE5E5E5">
-                                <comp:EstimateTable/>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="소" Width="165" Height="50">
-                            <Grid Background="#FFE5E5E5">
-                                <comp:EstimateTable/>
-                            </Grid>
-                        </TabItem>
+                    <TabControl Grid.Row="1" ItemsSource="{Binding GroupedUnits}">
+                        <TabControl.ItemTemplate>
+                            <DataTemplate>
+                                <TabItem Header="{Binding Size}" Width="150" Height="50">
+                                    <Grid Background="#FFE5E5E5">
+                                        <comp:EstimateTable />
+                                    </Grid>
+                                </TabItem>
+                            </DataTemplate>
+                        </TabControl.ItemTemplate>
                     </TabControl>
 
 

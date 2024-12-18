@@ -25,16 +25,12 @@ namespace Mataju.ViewFolder
         public Detail(HouseModel houseModel)
         {
             InitializeComponent();
-            DataContext = new DetailViewModel(houseModel);
+            DataContext = new DetailViewModel();
             
             string[] filteredImages = GetFilteredImages( houseModel.HouseId);
 
             // DetailViewModel 생성 및 DataContext 설정
-            DetailViewModel viewModel = new DetailViewModel(houseModel)
-            {
-                ImagePaths = filteredImages
-            };
-            DataContext = viewModel;
+            
         }
 
         private string[] GetFilteredImages( int houseId)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mataju.VMFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,17 @@ namespace Mataju.CompFolder
         public EstimateTable()
         {
             InitializeComponent();
+        }
+
+
+        // ViewModel을 바인딩하기 위한 속성
+        public static readonly DependencyProperty ViewModelProperty =
+            DependencyProperty.Register("ViewModel", typeof(EstimateTableViewModel), typeof(EstimateTable));
+
+        public EstimateTableViewModel ViewModel
+        {
+            get { return (EstimateTableViewModel)GetValue(ViewModelProperty); }
+            set { SetValue(ViewModelProperty, value); }
         }
     }
 }
