@@ -10,9 +10,7 @@
       Height="750" Width="1350"
       Title="List"
       >
-    <Window.DataContext>
-        <vm:ListViewModel/>
-    </Window.DataContext>
+
     <Grid>
         
         <Grid.RowDefinitions>
@@ -26,6 +24,7 @@
 
         <ComboBox  ItemsSource="{Binding Provinces}"
            SelectedItem="{Binding SelectedProvince, Mode=TwoWay}"
+           IsEnabled="False"
            VerticalAlignment="Center" HorizontalAlignment="Left" 
            VerticalContentAlignment="Center"
            FontSize="16"
