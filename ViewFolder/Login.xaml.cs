@@ -23,6 +23,7 @@ namespace Mataju.ViewFolder
         public Login()
         {
             InitializeComponent();
+            
         }
 
         private void JoinBtn_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,16 @@ namespace Mataju.ViewFolder
             if (DataContext is LoginViewModel viewModel)
             {
                 viewModel.LoginModel.Password = (sender as PasswordBox)?.Password;
+            }
+        }
+
+        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            var mediaElement = sender as MediaElement;
+            if (mediaElement != null)
+            {
+                mediaElement.Position = TimeSpan.Zero; // 동영상의 재생 위치를 처음으로
+                mediaElement.Play(); // 다시 재생
             }
         }
     }

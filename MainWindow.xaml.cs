@@ -29,6 +29,7 @@ namespace Mataju
             InitializeComponent();
 
             GlobalData.ImageFiles = LoadResourceFiles();
+            GlobalData.VideoFiles = LoadVideoResourceFile();
 
             // 이미지 파일 확인
             foreach (var file in GlobalData.ImageFiles)
@@ -52,6 +53,26 @@ namespace Mataju
                                            file.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
                                            file.EndsWith(".bmp", StringComparison.OrdinalIgnoreCase))
                             .ToArray();
+        }
+
+        static string LoadVideoResourceFile()
+        {
+            string resourceDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
+
+            Console.WriteLine($"Resource Folder Path: {resourceDirectory}");
+
+            // Mataju.mp4 파일 경로 가져오기
+            string videoFile = Directory.GetFiles(resourceDirectory, "*.*", SearchOption.TopDirectoryOnly)
+                                         .FirstOrDefault(file => file.EndsWith("Mataju.mp4", StringComparison.OrdinalIgnoreCase));
+
+            // 파일이 없을 경우 null 반환
+            if (videoFile == null)
+            {
+                Console.WriteLine("Mataju.mp4 not found in the Resources folder.");
+                return null;
+            }
+            Console.WriteLine(videoFile);
+            return videoFile;
         }
     }
 }

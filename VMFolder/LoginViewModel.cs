@@ -11,6 +11,7 @@ using System.Windows;
 using System.Security.RightsManagement;
 using Newtonsoft.Json.Linq;
 using Mataju.ViewFolder;
+using System.Windows.Navigation;
 
 namespace Mataju.VMFolder
 {
@@ -32,6 +33,18 @@ namespace Mataju.VMFolder
                     _loginModel = value;
                     OnPropertyChanged(nameof(LoginModel));
                 }
+            }
+        }
+
+        public Uri VideoPath
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(GlobalData.VideoFiles))
+                {
+                    return new Uri(GlobalData.VideoFiles, UriKind.Absolute);
+                }
+                return null;
             }
         }
 

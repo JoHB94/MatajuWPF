@@ -9,5 +9,6 @@ namespace Mataju
     public static class GlobalData
     {
         public static string[] ImageFiles { get; set; }
+        public static string VideoFiles { get; set; }
     }
 }

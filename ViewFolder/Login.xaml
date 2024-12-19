@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:Mataju.ViewFolder"
         xmlns:vm="clr-namespace:Mataju.VMFolder"
         mc:Ignorable="d"
-        Title="Login" Height="750" Width="1350">
+        Title="Login" Height="650" Width="1350">
     <!--뷰모델 데이터 콘텍스트 등록-->
     <Page.DataContext>
         <vm:LoginViewModel/>
     </Page.DataContext>
     <Grid  Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -37,11 +37,19 @@
                    FontSize="25" TextAlignment="Center" FontWeight="Bold"><Run Language="ko-kr" Text="LOGIN"/></TextBlock>
                 <Button x:Name="LoginBtn" Command="{Binding LoginCommand}" 
                         Width="120" Content="LOGIN" Margin="326,66,54,52"/>
-                <Button x:Name="JoinBtn" Width="120" Height="20" Content="회원가입" Margin="326,208,54,17" Click="JoinBtn_Click"/>
+                <Button x:Name="JoinBtn" Width="120" Height="20" Content="회원가입" Margin="329,175,57,22" Click="JoinBtn_Click"/>
                 
                 
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" Background="Black"></Grid>
+        <Grid Grid.Column="1" Background="Black">
+            <MediaElement 
+                Source="{Binding VideoPath}" 
+                LoadedBehavior="Play" 
+                UnloadedBehavior="Stop" 
+                Stretch="Fill" 
+                
+                />
+        </Grid>
     </Grid>
 </Page>
