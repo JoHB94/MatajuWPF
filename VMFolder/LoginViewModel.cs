@@ -15,10 +15,23 @@ using System.Windows.Navigation;
 
 namespace Mataju.VMFolder
 {
-    internal class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase
     {
         public static string token = null;
-        public static string nickname = null;
+        
+        private static string _nickname;
+        public static string Nickname
+        {
+            get => _nickname;
+            set
+            {
+                if (_nickname != value)
+                {
+                    _nickname = value;
+                    OnStaticPropertyChanged(nameof(Nickname));
+                }
+            }
+        }
         public static int userId = -1;
 
         private LoginModel _loginModel = new LoginModel();
@@ -69,13 +82,13 @@ namespace Mataju.VMFolder
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
                     JObject json = JObject.Parse(responseContent);
                     token = json["token"]?.ToString();
-                    nickname = json["nickname"]?.ToString();
+                    Nickname = json["nickname"]?.ToString();
                     userId = Convert.ToInt32(json["userId"] ?? 0);
                     Console.WriteLine($"token: {token}");
-                    Console.WriteLine($"nickname: {nickname}");
+                    Console.WriteLine($"nickname: {Nickname}");
 
                     Console.WriteLine($"응답: {responseContent}");
-                    MessageBox.Show($"안녕하세요, {nickname}님! 로그인에 성공하셨습니다.");
+                    MessageBox.Show($"안녕하세요, {Nickname}님! 로그인에 성공하셨습니다.");
                     
                     List list = new List();
                     list.WindowStartupLocation = WindowStartupLocation.CenterScreen;

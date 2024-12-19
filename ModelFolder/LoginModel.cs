@@ -8,7 +8,7 @@ using System.Security;
 
 namespace Mataju.ModelFolder
 {
-    internal class LoginModel
+    public class LoginModel
     {
         [JsonProperty("name")]
         public string Name { get; set; }

@@ -15,7 +15,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Mataju" FontSize="25" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontWeight="Black" />
-        <TextBlock Grid.Column="1" x:Name="UserName" Text="{x:Static vm:LoginViewModel.nickname }"   
+        <TextBlock Grid.Column="1" x:Name="UserName" Text="{Binding Nickname }"   
                    VerticalAlignment="Center" Foreground="White" FontSize="18"/>
         <Button x:Name="logoutBtn" Grid.Column="2" Content="로그아웃" Margin="30,10" Background="Navy" Foreground="White" Click="logoutBtn_Click"/>
     </Grid>

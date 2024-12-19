@@ -28,6 +28,7 @@ namespace Mataju.CompFolder
         public Header()
         {
             InitializeComponent();
+            DataContext = new LoginViewModel();
         }
 
         private void logoutBtn_Click(object sender, RoutedEventArgs e)
