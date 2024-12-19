@@ -27,19 +27,38 @@
                 <Frame x:Name="JoinFrame" Visibility="Collapsed"/>
             </Grid>
             <Grid x:Name="LoginGrid" Grid.Row="1">
-                <TextBox Text="{Binding LoginModel.Name}" HorizontalAlignment="Left" Margin="40,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="53"/>
+                <!-- 텍스트박스: 글자 크기와 수직 정렬 추가 -->
+                <TextBox Text="{Binding LoginModel.Name}" 
+             HorizontalAlignment="Left" Margin="40,70,0,0" 
+             TextWrapping="Wrap" VerticalAlignment="Top" 
+             Width="276" Height="53" 
+             FontSize="18" VerticalContentAlignment="Center"/>
+
+                <!-- 비밀번호 박스 -->
                 <PasswordBox x:Name="PasswordBox"
-                             PasswordChanged="PasswordBox_PasswordChanged"
-                             vm:PasswordExtends.BindPassword="True"
-                             vm:PasswordExtends.BoundPassword="{Binding LoginModel.Password}"
-                             HorizontalAlignment="Left" Margin="40,137,0,0" VerticalAlignment="Top" Width="276" Height="53"/>
-                <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="34"
-                   FontSize="25" TextAlignment="Center" FontWeight="Bold"><Run Language="ko-kr" Text="LOGIN"/></TextBlock>
+                 PasswordChanged="PasswordBox_PasswordChanged"
+                 vm:PasswordExtends.BindPassword="True"
+                 vm:PasswordExtends.BoundPassword="{Binding LoginModel.Password}"
+                 HorizontalAlignment="Left" Margin="40,137,0,0" 
+                 VerticalAlignment="Top" Width="276" Height="53"
+                 FontSize="18" VerticalContentAlignment="Center"/>
+
+                <!-- 텍스트블록 -->
+                <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" 
+               TextWrapping="Wrap" VerticalAlignment="Top" 
+               Width="132" Height="50" FontSize="35" 
+               TextAlignment="Center" FontWeight="Bold">
+        <Run Language="ko-kr" Text="LOGIN"/>
+                </TextBlock>
+
+                <!-- 로그인 버튼 -->
                 <Button x:Name="LoginBtn" Command="{Binding LoginCommand}" 
-                        Width="120" Content="LOGIN" Margin="326,66,54,52"/>
-                <Button x:Name="JoinBtn" Width="120" Height="20" Content="회원가입" Margin="329,175,57,22" Click="JoinBtn_Click"/>
-                
-                
+            Width="120" Content="LOGIN" Margin="329,64,57,54"/>
+
+                <!-- 회원가입 버튼 -->
+                <Button x:Name="JoinBtn" Width="120" Height="30" 
+            Content="회원가입" Margin="329,168,57,19" 
+            Click="JoinBtn_Click"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Background="Black">

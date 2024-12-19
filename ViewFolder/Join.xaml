@@ -30,25 +30,31 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
+
+            <!-- 이름(ID) -->
             <TextBlock Grid.Column="0" Grid.Row="0" Text="이름(ID)" VerticalAlignment="Center" FontSize="13" TextAlignment="Center"/>
             <TextBox x:Name="UserName" Text="{Binding User.Name}"
-                     Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="260" Height="30"/>
-            <Button x:Name="IdCheck" Grid.Column="2" Grid.Row="0" Content="중복체크" Height="30" VerticalAlignment="Center" Margin="20,0,20,0"/>
+             Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" 
+             VerticalContentAlignment="Center" FontSize="14" TextWrapping="Wrap" Width="260" Height="30"/>
 
+            <!-- 비밀번호 -->
             <TextBlock Grid.Column="0" Grid.Row="1" Text="비밀번호" VerticalAlignment="Center" FontSize="13" TextAlignment="Center"/>
             <TextBox x:Name="Password" Text="{Binding User.Password}"
-                     Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="260" Height="30"/>
+             Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" 
+             VerticalContentAlignment="Center" FontSize="14" TextWrapping="Wrap" Width="260" Height="30"/>
 
+            <!-- 비밀번호 확인 -->
             <TextBlock Grid.Column="0" Grid.Row="2" Text="비밀번호 확인" VerticalAlignment="Center" FontSize="13" TextAlignment="Center"/>
-            <TextBox x:Name="PasswordCheck" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="260" Height="30"/>
+            <TextBox x:Name="PasswordCheck" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" 
+             VerticalContentAlignment="Center" FontSize="14" TextWrapping="Wrap" Width="260" Height="30"/>
 
+            <!-- 닉네임 -->
             <TextBlock Grid.Column="0" Grid.Row="3" Text="닉네임" VerticalAlignment="Center" FontSize="13" TextAlignment="Center"/>
             <TextBox x:Name="NickName" Text="{Binding User.NickName}"
-                     Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="260" Height="30"/>
-
-            
-
+             Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" 
+             VerticalContentAlignment="Center" FontSize="14" TextWrapping="Wrap" Width="260" Height="30"/>
         </Grid>
+
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

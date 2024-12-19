@@ -34,7 +34,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- House 정보: 이름과 주소 -->
-                <Grid Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Background="Black">
+                <Grid Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Background="Navy">
                     <TextBlock  Foreground="White"
                         FontWeight="Black" FontSize="30" VerticalAlignment="Center" Margin="20">
                         <Run Text="Mataju/"/>
@@ -55,13 +55,22 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Margin="10">
-                                    <Image Source="{Binding}"  Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                <!-- Border 크기를 더 키움 -->
+                                <Border BorderBrush="Gray" CornerRadius="20" Margin="15" Width="240" Height="300">
+                                    <!-- Border 내부 콘텐츠를 둥글게 Clip -->
+                                    <Border.Clip>
+                                        <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,240,300"/>
+                                    </Border.Clip>
+                                    <!-- 이미지: Border 크기에 맞게 조정 -->
+                                    <Image Source="{Binding}" Stretch="UniformToFill" Width="240" Height="300" />
                                 </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
+
+
+
             </Grid>
             <!--Unit DataGrid-->
             <Grid Grid.Row="1">
@@ -83,20 +92,51 @@
             </Grid.RowDefinitions>
             <!--주의사항-->
             <Grid Grid.Row="0">
-                <Border Grid.Row="2" BorderBrush="Gray" Margin="10" CornerRadius="10" BorderThickness="1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="3*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="주의사항" FontWeight="Black" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Grid>
+                <Border Grid.Row="2" BorderBrush="Gray" Margin="10" CornerRadius="10" BorderThickness="1" Background="#F9F9F9">
+                    <!-- 스크롤 추가 -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- 제목 -->
+                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="📢 주의사항" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF5733" />
+
+                            <!-- 설명 -->
+                            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="20,10,20,10" FontSize="16" Foreground="#333333">
+                    <Run Text="1. 기본 요금 계산 방식:" FontWeight="Bold" />
+                    <LineBreak />
+                    총 이용 기간이 30일 이하일 경우, 기본 요금만 청구됩니다.
+                    <LineBreak />
+                    <LineBreak />
+                    <Run Text="2. 초과 요금 계산 방식:" FontWeight="Bold" />
+                    <LineBreak />
+                    총 이용 기간이 30일을 초과하면 초과 요금이 추가됩니다. 초과 요금은 다음과 같이 계산됩니다:
+                    <LineBreak />
+                    <Run Text="(기본 요금 / 30) × 초과 일수" />
+                    <LineBreak />
+                    예를 들어, 기본 요금이 300,000원이고 이용 기간이 40일일 경우:
+                    <LineBreak />
+                    초과 요금 = (300,000 / 30) × 10 = 100,000원
+                    <LineBreak />
+                    총 요금 = 300,000 + 100,000 = 400,000원
+                    <LineBreak />
+                    <LineBreak />
+                    <Run Text="3. 기간 설정에 유의하세요:" FontWeight="Bold" />
+                    <LineBreak />
+                    시작일과 종료일이 정확하지 않으면 요금이 정상적으로 계산되지 않을 수 있습니다.
+                            </TextBlock>
+                        </Grid>
+                    </ScrollViewer>
                 </Border>
             </Grid>
+
             <!--주문하기-->
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -141,7 +181,7 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="40,40" Content="돌아가기"/>
+                    <Button Grid.Column="0" Margin="40,40" Content="돌아가기" Click="Button_Click"/>
                     <Button Command="{Binding BookCommand}" 
                         Grid.Column="1" Margin="40,40" Content="예약하기"/>
                 </Grid>

@@ -28,6 +28,8 @@ namespace Mataju.VMFolder
             }
         }
 
+        public Action CloseWindow { get; set; }
+
         public ICommand JoinCommand { get; }
 
         public UserViewModel()
@@ -55,6 +57,8 @@ namespace Mataju.VMFolder
                     string responseContent = await responseMessage.Content.ReadAsStringAsync();
                     Console.WriteLine($"응답: {responseContent}");
                     MessageBox.Show("사용자 등록 성공!");
+                    // Window 닫기
+                    CloseWindow?.Invoke();
                 }
                 else
                 {

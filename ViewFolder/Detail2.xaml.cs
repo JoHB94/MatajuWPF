@@ -65,5 +65,10 @@ namespace Mataju.ViewFolder
         {
             await _service.GetHousebyId(houseId);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

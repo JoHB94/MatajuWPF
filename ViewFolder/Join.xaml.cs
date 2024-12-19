@@ -23,6 +23,11 @@ namespace Mataju.ViewFolder
         public Join()
         {
             InitializeComponent();
+            var viewModel = new UserViewModel();
+            DataContext = viewModel;
+
+            // ViewModel의 CloseWindow Action을 창 닫기로 연결
+            viewModel.CloseWindow = () => this.Close();
         }
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)

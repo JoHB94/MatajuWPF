@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Mataju"
        
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="750" Width="1350">
     <Grid>
         <Frame x:Name="MainFrame" Source="/ViewFolder/Login.xaml"/>
